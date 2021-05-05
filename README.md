@@ -12,9 +12,10 @@ Full **API documentation** can be found [here](https://api.forbury.com/docs).
 ## Setup
 In order to get started, please follow these steps.
 
-1. Install the package from the command line using the following command
+1. Install the package from the command line using the following commands
 ```
-dotnet add PROJECT package Forbury.Integrations --version 1.0.0
+dotnet nuget add source "https://nuget.pkg.github.com/Forbury/index.json" --name Forbury
+dotnet add package Forbury.Integrations --version 1.0.0
 ```
 
 2. Add the following to your `appsettings.config` and replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET`
@@ -23,7 +24,6 @@ dotnet add PROJECT package Forbury.Integrations --version 1.0.0
 "Forbury": {
   "Api": {
     "Url": "https://api.forbury.com/",
-    "Version": 1
   },
   "Authentication": {
     "Url": "https://account.forbury.com/",
@@ -75,3 +75,8 @@ public class ForburyController : Controller
     }
 }
 ```
+## Versions
+
+Currently available API versions:
+- V1
+
