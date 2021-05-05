@@ -12,13 +12,20 @@ Full **API documentation** can be found [here](https://api.forbury.com/docs).
 ## Setup
 In order to get started, please follow these steps.
 
-1. Install the package from the command line using the following commands
+**1.** Install the NuGet package using one of the following commands
+
+_Package Manager_
 ```
-dotnet nuget add source "https://nuget.pkg.github.com/Forbury/index.json" --name Forbury
-dotnet add package Forbury.Integrations --version 1.0.0
+Install-Package Forbury.Integrations -Version 1.0.0
 ```
 
-2. Add the following to your `appsettings.config` and replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET`
+_.NET CLI_
+```
+dotnet add PROJECT package Forbury.Integrations --version 1.0.0
+```
+For a full list of the latest releases, please see the [package release page](https://www.nuget.org/packages/Forbury.Integrations).
+
+**2.** Add the following to your `appsettings.config` (replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET`)
 
 ```json
 "Forbury": {
@@ -33,7 +40,7 @@ dotnet add package Forbury.Integrations --version 1.0.0
 }
 ```
 
-3. Add the following inside your `Startup.cs` (replace `V1` depending on your requirements)
+**3.** Add the following inside your `Startup.cs` (replace `V1` depending on your requirements)
 
 ```C#
 public IConfiguration Configuration { get; }
