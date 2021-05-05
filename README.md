@@ -1,4 +1,7 @@
 ﻿# Forbury Integrations
+ 
+ [![NuGet](https://img.shields.io/nuget/v/Forbury.Integrations)](https://www.nuget.org/packages/Forbury.Integrations)
+ [![Licence](https://img.shields.io/github/license/Forbury/Integrations)](LICENCE.txt)
 
 This C# client library provides an easy way for integrating with Forbury external APIs.
 
