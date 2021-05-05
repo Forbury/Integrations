@@ -4,10 +4,11 @@
     <Version>1.0.0</Version>
     <Authors>Forbury Development Team</Authors>
     <Company>Forbury</Company>
-    <Description>
+    <PackageDescription>
       This client library provides an easy pathway for integrating with Forbury external APIs.
       Forbury API documentation: https://api.forbury.com/docs
-    </Description>
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Forbury/Integrations</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
