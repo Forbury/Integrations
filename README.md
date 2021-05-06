@@ -7,7 +7,7 @@
 This C# client library provides an easy way for integrating with Forbury external APIs.
 
 **_Note:_** In order to use this library, you must be an existing Forbury customer and have an API `ClientId` and `ClientSecret`.
-To learn more about becoming a Forbury customer, or if you already are and would like access, please [contact support](https://support.forburyproperty.com/).
+To learn more about becoming a Forbury customer, or if you already are and would like access, please [contact us](https://www.forbury.com/contact-us).
 
 ## Documentation
 
