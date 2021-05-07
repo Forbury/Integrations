@@ -44,7 +44,7 @@ For a full list of the latest releases, please see the [package release page](ht
 }
 ```
 
-**3.** Add the following inside your `Startup.cs` (replace `V1` depending on your requirements)
+**3.** Add the following inside your `Startup.cs` (replace `V1` with the appropriate [version](#Versions) depending on your requirements)
 
 ```C#
 public IConfiguration Configuration { get; }
@@ -57,7 +57,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-You should now be ready to us the API!
+You should now be ready to use the API!
 
 ## Usage
 
