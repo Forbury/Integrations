@@ -2,6 +2,7 @@
 {
     public enum ReviewThresholdType
     {
+        None,
         Market,
         MarketReview
     }
