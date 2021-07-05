@@ -5,6 +5,6 @@ namespace Forbury.Integrations.API.Interfaces
 {
     public interface IForburyAuthenticationService
     {
-        Task<TokenResponse> GetAccessTokenAsync();
+        Task<string> GetAccessTokenAsync();
     }
 }

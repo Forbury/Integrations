@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Forbury.Integrations.API.Interfaces;
@@ -12,6 +13,8 @@ namespace Forbury.Integrations.API.Services
 {
     public class ForburyAuthenticationService : IForburyAuthenticationService
     {
+        private static TokenResponse _token;
+        
         private readonly HttpClient _httpClient;
         private readonly ForburyConfiguration _configuration;
 
@@ -22,8 +25,11 @@ namespace Forbury.Integrations.API.Services
             _configuration = configurationOptions.Value;
         }
 
-        public async Task<TokenResponse> GetAccessTokenAsync()
+        public async Task<string> GetAccessTokenAsync()
         {
+            if (IsAuthorised())
+                return _token.AccessToken;
+
             var data = new FormUrlEncodedContent(new Dictionary<string, string>
             {
                 { "grant_type", GrantType.ClientCredentials },
@@ -33,7 +39,14 @@ namespace Forbury.Integrations.API.Services
 
             HttpResponseMessage response = await _httpClient.PostAsync("connect/token", data);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<TokenResponse>();
+            _token =  await response.Content.ReadAsObjectAsync<TokenResponse>();
+            return _token.AccessToken;
+        }
+
+        private bool IsAuthorised()
+        {
+            // Added 30 second buffer for request times
+            return _token != null && DateTime.Now.AddSeconds(30) < _token.ExpiresOn;
         }
     }
 }
