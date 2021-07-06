@@ -19,7 +19,7 @@ namespace Forbury.Integrations.API
             services.AddHttpClient<IForburyApiServiceV1, ForburyApiServiceV1>(config =>
             {
                 config.BaseAddress = new Uri($"{configuration["Forbury:Api:Url"]}api/v1/");
-            });
+            }).AddHttpMessageHandler<AuthorizationDelegatingHandler>();
 
             return services;
         }
@@ -27,7 +27,9 @@ namespace Forbury.Integrations.API
         private static IServiceCollection AddForburyAuthenticationAndConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ForburyConfiguration>(options => configuration.GetSection("Forbury").Bind(options));
-            
+
+            services.AddTransient<AuthorizationDelegatingHandler>();
+
             services.AddHttpClient<IForburyAuthenticationService, ForburyAuthenticationService>(config =>
             {
                 config.BaseAddress = new Uri(configuration["Forbury:Authentication:Url"]);
