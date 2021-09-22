@@ -61,28 +61,26 @@ You should now be ready to use the API!
 
 ## Usage
 
-Example usage inside a Controller.
+Example usage inside a Service.
 
 ```C#
-public class ForburyController : Controller
+public class ForburyDataService
 {
     private readonly IForburyApiService _forburyApiService;
-        
-    public ForburyController(IForburyApiService forburyApiService)
+
+    public ForburyDataService(IForburyApiService forburyApiService)
     {
         _forburyApiService = forburyApiService;
     }
 
-    [HttpGet("team")]
-    public async Task<PagedResult<TeamDto>> GetTeams()
+    public async Task<PagedResult<TeamDto>> GetTeams(int amount = 20, int page = 1)
     {
-        return await _forburyApiService.GetTeams();
+        return await _forburyApiService.GetTeams(amount, page);
     }
 
-    [HttpGet("team/{id}/model")]
-    public async Task<PagedResult<ModelDto>> GetModelDataForTeam(int id)
+    public async Task<PagedResult<ModelDto>> GetModelDataForTeam(int id, DateTime? fromDate = null)
     {
-        return await _forburyApiService.GetModelDataForTeam(id);
+        return await _forburyApiService.GetModelDataForTeam(id, fromDate);
     }
 }
 ```
