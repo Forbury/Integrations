@@ -17,7 +17,7 @@ namespace Forbury.Integrations.API
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            string accessToken = await _forburyAuthenticationService.GetAccessTokenAsync();
+            string accessToken = await _forburyAuthenticationService.GetAccessTokenAsync(cancellationToken);
             request.SetBearerToken(accessToken);
             return await base.SendAsync(request, cancellationToken);
         }

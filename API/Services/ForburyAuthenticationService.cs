@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
+using Forbury.Integrations.API.Exceptions;
 using Forbury.Integrations.API.Interfaces;
 using Forbury.Integrations.API.Models;
 using Forbury.Integrations.API.Models.Configuration;
@@ -14,7 +16,8 @@ namespace Forbury.Integrations.API.Services
     public class ForburyAuthenticationService : IForburyAuthenticationService
     {
         private static TokenResponse _token;
-        
+        private static readonly SemaphoreSlim _tokenSemaphore = new SemaphoreSlim(1, 1);
+
         private readonly HttpClient _httpClient;
         private readonly ForburyConfiguration _configuration;
 
@@ -25,28 +28,42 @@ namespace Forbury.Integrations.API.Services
             _configuration = configurationOptions.Value;
         }
 
-        public async Task<string> GetAccessTokenAsync()
+        public async Task<string> GetAccessTokenAsync(CancellationToken cancellationToken)
         {
-            if (IsAuthorised())
-                return _token.AccessToken;
+            await _tokenSemaphore.WaitAsync(cancellationToken);            
 
-            var data = new FormUrlEncodedContent(new Dictionary<string, string>
+            try
             {
-                { "grant_type", GrantType.ClientCredentials },
-                { "client_id", _configuration.Authentication.ClientId },
-                { "client_secret", _configuration.Authentication.ClientSecret }
-            });
+                if (IsAuthorised())
+                    return _token.AccessToken;
 
-            HttpResponseMessage response = await _httpClient.PostAsync("connect/token", data);
-            response.EnsureSuccessStatusCode();
-            _token =  await response.Content.ReadAsObjectAsync<TokenResponse>();
+                var data = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    {"grant_type", GrantType.ClientCredentials},
+                    {"client_id", _configuration.Authentication.ClientId},
+                    {"client_secret", _configuration.Authentication.ClientSecret}
+                });
+
+                HttpResponseMessage response = await _httpClient.PostAsync("connect/token", data, cancellationToken);
+                response.EnsureSuccessStatusCode();
+                _token = await response.Content.ReadAsObjectAsync<TokenResponse>();
+            }
+            catch (Exception ex)
+            {
+                throw new ForburyAuthenticationException("Error authenticating with Forbury servers.", ex);
+            }
+            finally
+            {
+                _tokenSemaphore.Release();
+            }
+
             return _token.AccessToken;
         }
 
         private bool IsAuthorised()
         {
             // Added 30 second buffer for request times
-            return _token != null && DateTime.Now.AddSeconds(30) < _token.ExpiresOn;
+            return _token != null && DateTime.UtcNow.AddSeconds(30) < _token.ExpiresOn;
         }
     }
 }

@@ -12,5 +12,6 @@ namespace Forbury.Integrations.API.v1.Dto
         public DateTimeOffset CreatedOn { get; set; }
         public string CreatedByEmail { get; set; }
         public int TeamId { get; set; }
+        public string ExternalId { get; set; }
     }
 }
