@@ -30,13 +30,13 @@ namespace Forbury.Integrations.API.Services
 
         public async Task<string> GetAccessTokenAsync(CancellationToken cancellationToken)
         {
+            if (IsAuthorised())
+                return _token.AccessToken;
+
             await _tokenSemaphore.WaitAsync(cancellationToken);            
 
             try
             {
-                if (IsAuthorised())
-                    return _token.AccessToken;
-
                 var data = new FormUrlEncodedContent(new Dictionary<string, string>
                 {
                     {"grant_type", GrantType.ClientCredentials},
