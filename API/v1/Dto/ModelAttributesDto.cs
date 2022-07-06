@@ -7,6 +7,8 @@ namespace Forbury.Integrations.API.v1.Dto
 {
     public class ModelAttributesDto
     {
+        public int ModelId { get; set; }
+        public string ModelName { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ModelType Type { get; set; }
         public DateTimeOffset CreatedOn { get; set; }
