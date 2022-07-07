@@ -1,27 +1,35 @@
 ﻿using System;
 using Forbury.Integrations.API.Interfaces;
-using Forbury.Integrations.API.Models;
 using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ForburyApiServiceV1 = Forbury.Integrations.API.v1.Services.ForburyApiService;
-using IForburyApiServiceV1 = Forbury.Integrations.API.v1.Interfaces.IForburyApiService;
 
 namespace Forbury.Integrations.API
 {
     public static class IServiceCollectionExtensions
     {
-        public static IServiceCollection AddForburyApiV1(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddForburyApi(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddForburyAuthenticationAndConfiguration(configuration);
-            
-            services.AddHttpClient<IForburyApiServiceV1, ForburyApiServiceV1>(config =>
-            {
-                config.BaseAddress = new Uri($"{configuration["Forbury:Api:Url"]}api/v1/");
-            }).AddHttpMessageHandler<AuthorizationDelegatingHandler>();
+
+            // Leaving blank or "0" will setup all API versions for DI
+            var apiVersion = int.TryParse(configuration["Forbury:Api:Version"], out int parsedApiVersion) ?
+                parsedApiVersion : 0;
+
+            if (apiVersion == 1 || apiVersion == 0) v1.ServiceBuilder.AddForburyServices(services, $"{configuration["Forbury:Api:Url"]}api/v1");
 
             return services;
+        }
+
+        internal static void AddForburyHttpClient<TClient, TImplementation>(this IServiceCollection services, string uriPrefix, string uriPath)
+            where TClient : class 
+            where TImplementation : class, TClient
+        {
+            services.AddHttpClient<TClient, TImplementation>(config =>
+            {
+                config.BaseAddress = new Uri($"{uriPrefix}/{uriPath}/");
+            }).AddHttpMessageHandler<AuthorizationDelegatingHandler>();
         }
 
         private static IServiceCollection AddForburyAuthenticationAndConfiguration(this IServiceCollection services, IConfiguration configuration)

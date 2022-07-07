@@ -6,7 +6,7 @@ using IdentityModel.Client;
 
 namespace Forbury.Integrations.API
 {
-    public class AuthorizationDelegatingHandler : DelegatingHandler
+    internal class AuthorizationDelegatingHandler : DelegatingHandler
     {
         private readonly IForburyAuthenticationService _forburyAuthenticationService;
 
