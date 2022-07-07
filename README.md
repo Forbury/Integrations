@@ -13,19 +13,19 @@ To learn more about becoming a Forbury customer, or if you already are and would
 
 Full **API documentation** can be found [here](https://api.forbury.com/docs).
 
-## Setup
+## Quick Start Guide
 In order to get started, please follow these steps.
 
 **1.** Install the NuGet package using one of the following commands
 
 _Package Manager_
 ```
-Install-Package Forbury.Integrations -Version 1.0.0
+Install-Package Forbury.Integrations -Version 1.1.0
 ```
 
 _.NET CLI_
 ```
-dotnet add PROJECT package Forbury.Integrations --version 1.0.0
+dotnet add PROJECT package Forbury.Integrations --version 1.1.0
 ```
 For a full list of the latest releases, please see the [package release page](https://www.nuget.org/packages/Forbury.Integrations).
 
@@ -35,6 +35,7 @@ For a full list of the latest releases, please see the [package release page](ht
 "Forbury": {
   "Api": {
     "Url": "https://api.forbury.com/",
+    "Version": 1
   },
   "Authentication": {
     "Url": "https://account.forbury.com/",
@@ -44,48 +45,60 @@ For a full list of the latest releases, please see the [package release page](ht
 }
 ```
 
-**3.** Add the following inside your `Startup.cs` (replace `V1` with the appropriate [version](#Versions) depending on your requirements)
+**3.** Add the following inside your `Startup.cs`
 
 ```C#
 public IConfiguration Configuration { get; }
 
 public void ConfigureServices(IServiceCollection services)
-{
-    ...          
-    services.AddForburyApiV1(Configuration);
+{        
+    services.AddForburyApi(Configuration);
     ...
 }
 ```
 
 You should now be ready to use the API!
 
-## Usage
+## Example API Usage
 
 Example usage inside a Service.
 
+**_Note:_** _Please take note of the using statements, its important to import usings from the correct version (see [versions](#Versions) below)._
+
 ```C#
+using Forbury.Integrations.API.v1.Dto;
+using Forbury.Integrations.API.v1.Interfaces;
+...
+
 public class ForburyDataService
 {
-    private readonly IForburyApiService _forburyApiService;
+    private readonly IForburyTeamApiClient _forburyTeamApiClient;
 
-    public ForburyDataService(IForburyApiService forburyApiService)
+    public ForburyDataService(IForburyTeamApiClient forburyTeamApiClient)
     {
-        _forburyApiService = forburyApiService;
+        _forburyTeamApiClient = forburyTeamApiClient;
     }
 
-    public async Task<PagedResult<TeamDto>> GetTeams(int amount = 20, int page = 1)
+    public async Task GetTeams(int amount = 20, int page = 1)
     {
-        return await _forburyApiService.GetTeams(amount, page);
+        PagedResult<TeamDto> teams = await _forburyTeamApiClient.GetTeams(amount, page);
+
+        // Do work here
+        ...
     }
 
-    public async Task<PagedResult<ModelDto>> GetModelDataForTeam(int id, DateTime? fromDate = null)
+    public async Task GetModelDataForTeam(int id, DateTime? fromDate = null, int amount = 20, int page = 1)
     {
-        return await _forburyApiService.GetModelDataForTeam(id, fromDate);
+        PagedResult<ModelDto> models = await _forburyTeamApiClient.GetModelsByTeamId(id, fromDate, null, amount, page);
+
+        // Do work here
+        ...
     }
 }
 ```
+
 ## Versions
 
 Currently available API versions:
-- V1
+- v1
 
