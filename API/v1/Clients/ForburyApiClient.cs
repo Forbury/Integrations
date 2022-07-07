@@ -1,6 +1,9 @@
 ﻿using Forbury.Integrations.API.v1.Interfaces;
+using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Forbury.Integrations.API.v1.Services
 {
@@ -20,6 +23,13 @@ namespace Forbury.Integrations.API.v1.Services
                 { "amount", amount.ToString() },
                 { "page", page.ToString() }
             };
+        }
+
+        protected async Task<TResult> GetAsync<TResult>(string requestUri, CancellationToken cancellationToken)
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync(requestUri, cancellationToken);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsObjectAsync<TResult>();
         }
     }
 }

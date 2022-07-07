@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Interfaces;
-using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Forbury.Integrations.API.v1.Services
@@ -26,17 +25,13 @@ namespace Forbury.Integrations.API.v1.Services
             if (fromDate != null) queryBuilder.Add("fromDate", fromDate.ToString());
             if (modelType != null) queryBuilder.Add("modelType", modelType.Value.ToString("d"));
 
-            HttpResponseMessage response = await _httpClient.GetAsync($"{queryBuilder.ToQueryString()}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<PagedResult<ModelDto>>();
+            return await GetAsync<PagedResult<ModelDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
         public async Task<ModelDetailedDto> GetModelById(int modelId, 
             CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"{modelId}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<ModelDetailedDto>();
+            return await GetAsync<ModelDetailedDto>($"{modelId}", cancellationToken);
         }
     }
 }

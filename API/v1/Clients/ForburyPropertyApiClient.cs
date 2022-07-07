@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Interfaces;
-using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Forbury.Integrations.API.v1.Services
@@ -22,17 +21,13 @@ namespace Forbury.Integrations.API.v1.Services
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
 
-            HttpResponseMessage response = await _httpClient.GetAsync($"{queryBuilder.ToQueryString()}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<PagedResult<PropertyDto>>();
+            return await GetAsync<PagedResult<PropertyDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
         public async Task<PropertyDetailedDto> GetPropertyById(int propertyId, 
             CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"{propertyId}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<PropertyDetailedDto>();
+            return await GetAsync<PropertyDetailedDto>($"{propertyId}", cancellationToken);
         }
 
         public async Task<PagedResult<ModelDto>> GetModelsByPropertyId(int propertyId, 
@@ -46,18 +41,14 @@ namespace Forbury.Integrations.API.v1.Services
             if (fromDate != null) queryBuilder.Add("fromDate", fromDate.ToString());
             if (modelType != null) queryBuilder.Add("modelType", modelType.Value.ToString("d"));
 
-            HttpResponseMessage response = await _httpClient.GetAsync($"{propertyId}/model{queryBuilder.ToQueryString()}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<PagedResult<ModelDto>>();
+            return await GetAsync<PagedResult<ModelDto>>($"{propertyId}/model{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
         public async Task<ModelDetailedDto> GetModelByPropertyId(int propertyId, 
             int modelId, 
             CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"{propertyId}/model/{modelId}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<ModelDetailedDto>();
+            return await GetAsync<ModelDetailedDto>($"{propertyId}/model/{modelId}", cancellationToken);
         }
     }
 }

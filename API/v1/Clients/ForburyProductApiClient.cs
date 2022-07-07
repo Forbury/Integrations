@@ -19,9 +19,7 @@ namespace Forbury.Integrations.API.v1.Services
 
         public async Task<List<ProductDto>> GetProducts(CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync(string.Empty, cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<List<ProductDto>>();
+            return await GetAsync<List<ProductDto>>(string.Empty, cancellationToken);
         }
 
         public async Task<(Stream FileStream, string ContentType, string FileName)> DownloadProduct(ProductType productType, 

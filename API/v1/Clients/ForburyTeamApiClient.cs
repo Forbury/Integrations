@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Interfaces;
-using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Forbury.Integrations.API.v1.Services
@@ -21,17 +20,14 @@ namespace Forbury.Integrations.API.v1.Services
             CancellationToken cancellationToken = default)
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
-            HttpResponseMessage response = await _httpClient.GetAsync($"{queryBuilder.ToQueryString()}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<PagedResult<TeamDto>>();
+
+            return await GetAsync<PagedResult<TeamDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
         public async Task<TeamDetailedDto> GetTeamById(int teamId, 
             CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"{teamId}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<TeamDetailedDto>();
+            return await GetAsync<TeamDetailedDto>($"{teamId}", cancellationToken);
         }
 
         public async Task<PagedResult<ModelDto>> GetModelsByTeamId(int teamId, 
@@ -45,18 +41,14 @@ namespace Forbury.Integrations.API.v1.Services
             if (fromDate != null) queryBuilder.Add("fromDate", fromDate.ToString());
             if (modelType != null) queryBuilder.Add("modelType", modelType.Value.ToString("d"));
 
-            HttpResponseMessage response = await _httpClient.GetAsync($"{teamId}/model{queryBuilder.ToQueryString()}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<PagedResult<ModelDto>>();
+            return await GetAsync<PagedResult<ModelDto>>($"{teamId}/model{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
         public async Task<ModelDetailedDto> GetModelByTeamId(int teamId, 
             int modelId, 
             CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"{teamId}/model/{modelId}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<ModelDetailedDto>();
+            return await GetAsync<ModelDetailedDto>($"{teamId}/model/{modelId}", cancellationToken);
         }
 
         public async Task<PagedResult<PropertyDto>> GetPropertiesByTeamId(int teamId, 
@@ -66,18 +58,14 @@ namespace Forbury.Integrations.API.v1.Services
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
 
-            HttpResponseMessage response = await _httpClient.GetAsync($"{teamId}/property{queryBuilder.ToQueryString()}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<PagedResult<PropertyDto>>();
+            return await GetAsync<PagedResult<PropertyDto>>($"{teamId}/property{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
         public async Task<PropertyDetailedDto> GetPropertyByTeamId(int teamId, 
             int propertyId, 
             CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"{teamId}/property/{propertyId}", cancellationToken);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsObjectAsync<PropertyDetailedDto>();
+            return await GetAsync<PropertyDetailedDto>($"{teamId}/property/{propertyId}", cancellationToken);
         }
     }
 }
