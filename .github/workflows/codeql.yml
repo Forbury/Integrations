@@ -70,3 +70,6 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+      
+    - name: GitHub Security Report Action
+      uses: peter-murray/github-security-report-action@v2
