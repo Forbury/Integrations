@@ -9,6 +9,7 @@
       Forbury API documentation: https://api.forbury.com/docs
     </PackageDescription>
     <RepositoryUrl>https://github.com/Forbury/Integrations</RepositoryUrl>
+	<PackageIcon>logo_128x128.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -23,7 +24,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="LICENCE.txt" Pack="true" PackagePath="LICENCE.txt" />
+    <None Include="..\LICENCE.txt" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\assets\logo\logo_128x128.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>

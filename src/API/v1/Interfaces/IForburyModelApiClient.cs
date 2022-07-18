@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
+using Forbury.Integrations.API.v1.Dto.File;
 
 namespace Forbury.Integrations.API.v1.Interfaces
 {
