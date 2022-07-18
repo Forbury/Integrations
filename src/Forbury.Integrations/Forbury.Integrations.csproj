@@ -24,11 +24,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\LICENCE.txt" Pack="true" PackagePath="" />
+    <None Include="..\..\LICENCE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
   
   <ItemGroup>
-    <None Include="..\assets\logo\logo_128x128.png" Pack="true" PackagePath="" />
+    <None Include="..\..\assets\logo\logo_128x128.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
