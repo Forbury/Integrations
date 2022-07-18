@@ -4,6 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
+using Forbury.Integrations.API.v1.Dto.Model;
+using Forbury.Integrations.API.v1.Dto.Property;
+using Forbury.Integrations.API.v1.Dto.Team;
 using Forbury.Integrations.API.v1.Interfaces;
 using Microsoft.AspNetCore.Http.Extensions;
 
