@@ -24,7 +24,7 @@ namespace Forbury.Integrations.Tests
 
             // Check object is not null, format was maintained, and value can be converted back correctly
             Assert.That(deserializedGeneralDto.ValuationDate, Is.Not.Null);
-            Assert.AreEqual(now.Date, deserializedGeneralDto.ValuationDate.Value.Date);
+            Assert.That(deserializedGeneralDto.ValuationDate.Value.Date, Is.EqualTo(now.Date));
             StringAssert.Contains(now.Date.ToString(JsonFormats.DateFormat), jsonString);
         }
     }
