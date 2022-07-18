@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Forbury.Integrations.API.v1.Services
+namespace Forbury.Integrations.API.v1.Clients
 {
     public abstract class ForburyApiClient : IForburyApiClient
     {
@@ -53,7 +53,8 @@ namespace Forbury.Integrations.API.v1.Services
             {
                 var forburyApiError = await response.Content.ReadAsObjectAsync<ForburyApiError>();
                 message = forburyApiError.Message;
-            } catch { }
+            }
+            catch { }
 
             throw new ForburyApiException(message, response.StatusCode);
         }

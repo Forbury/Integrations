@@ -1,5 +1,5 @@
-﻿using Forbury.Integrations.API.v1.Interfaces;
-using Forbury.Integrations.API.v1.Services;
+﻿using Forbury.Integrations.API.v1.Clients;
+using Forbury.Integrations.API.v1.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Forbury.Integrations.API.v1

@@ -9,7 +9,7 @@ using Forbury.Integrations.API.v1.Interfaces;
 using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace Forbury.Integrations.API.v1.Services
+namespace Forbury.Integrations.API.v1.Clients
 {
     public class ForburyProductApiClient : ForburyApiClient, IForburyProductApiClient
     {
@@ -22,10 +22,10 @@ namespace Forbury.Integrations.API.v1.Services
             return await GetAsync<List<ProductDto>>(string.Empty, cancellationToken);
         }
 
-        public async Task<(Stream FileStream, string ContentType, string FileName)> DownloadProduct(ProductType productType, 
-            string googlePropertyId = null, 
-            string externalId = null, 
-            int? modelId = null, 
+        public async Task<(Stream FileStream, string ContentType, string FileName)> DownloadProduct(ProductType productType,
+            string googlePropertyId = null,
+            string externalId = null,
+            int? modelId = null,
             CancellationToken cancellationToken = default)
         {
             var queryBuilder = new QueryBuilder();

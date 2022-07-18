@@ -9,7 +9,7 @@ using Forbury.Integrations.API.v1.Dto.Property;
 using Forbury.Integrations.API.v1.Interfaces;
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace Forbury.Integrations.API.v1.Services
+namespace Forbury.Integrations.API.v1.Clients
 {
     public class ForburyPropertyApiClient : ForburyApiClient, IForburyPropertyApiClient
     {
@@ -17,8 +17,8 @@ namespace Forbury.Integrations.API.v1.Services
             base(httpClient)
         { }
 
-        public async Task<PagedResult<PropertyDto>> GetProperties(int amount = 20, 
-            int page = 1, 
+        public async Task<PagedResult<PropertyDto>> GetProperties(int amount = 20,
+            int page = 1,
             CancellationToken cancellationToken = default)
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
@@ -26,17 +26,17 @@ namespace Forbury.Integrations.API.v1.Services
             return await GetAsync<PagedResult<PropertyDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
-        public async Task<PropertyDetailedDto> GetPropertyById(int propertyId, 
+        public async Task<PropertyDetailedDto> GetPropertyById(int propertyId,
             CancellationToken cancellationToken = default)
         {
             return await GetAsync<PropertyDetailedDto>($"{propertyId}", cancellationToken);
         }
 
-        public async Task<PagedResult<ModelDto>> GetModelsByPropertyId(int propertyId, 
-            DateTime? fromDate = null, 
-            ModelType? modelType = null, 
-            int amount = 20, 
-            int page = 1, 
+        public async Task<PagedResult<ModelDto>> GetModelsByPropertyId(int propertyId,
+            DateTime? fromDate = null,
+            ModelType? modelType = null,
+            int amount = 20,
+            int page = 1,
             CancellationToken cancellationToken = default)
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
@@ -46,8 +46,8 @@ namespace Forbury.Integrations.API.v1.Services
             return await GetAsync<PagedResult<ModelDto>>($"{propertyId}/model{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
-        public async Task<ModelDetailedDto> GetModelByPropertyId(int propertyId, 
-            int modelId, 
+        public async Task<ModelDetailedDto> GetModelByPropertyId(int propertyId,
+            int modelId,
             CancellationToken cancellationToken = default)
         {
             return await GetAsync<ModelDetailedDto>($"{propertyId}/model/{modelId}", cancellationToken);

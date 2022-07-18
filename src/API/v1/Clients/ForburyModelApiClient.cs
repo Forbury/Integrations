@@ -8,12 +8,12 @@ using Forbury.Integrations.API.v1.Dto.Model;
 using Forbury.Integrations.API.v1.Interfaces;
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace Forbury.Integrations.API.v1.Services
+namespace Forbury.Integrations.API.v1.Clients
 {
     public class ForburyModelApiClient : ForburyApiClient, IForburyModelApiClient
     {
-        public ForburyModelApiClient(HttpClient httpClient) : 
-            base(httpClient) 
+        public ForburyModelApiClient(HttpClient httpClient) :
+            base(httpClient)
         { }
 
         public async Task<PagedResult<ModelDto>> GetModels(DateTime? fromDate = null,
@@ -29,7 +29,7 @@ namespace Forbury.Integrations.API.v1.Services
             return await GetAsync<PagedResult<ModelDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
-        public async Task<ModelDetailedDto> GetModelById(int modelId, 
+        public async Task<ModelDetailedDto> GetModelById(int modelId,
             CancellationToken cancellationToken = default)
         {
             return await GetAsync<ModelDetailedDto>($"{modelId}", cancellationToken);
