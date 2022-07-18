@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forbury.Integrations", "src\Forbury.Integrations\Forbury.Integrations.csproj", "{394C9FF2-AC15-4F27-9EAF-3FEA4F3FDE27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forbury.Integrations.Tests", "test\Forbury.Integrations.Tests\Forbury.Integrations.Tests.csproj", "{B33574E2-130C-4896-9415-D8B098751A38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{394C9FF2-AC15-4F27-9EAF-3FEA4F3FDE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{394C9FF2-AC15-4F27-9EAF-3FEA4F3FDE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{394C9FF2-AC15-4F27-9EAF-3FEA4F3FDE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{394C9FF2-AC15-4F27-9EAF-3FEA4F3FDE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B33574E2-130C-4896-9415-D8B098751A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B33574E2-130C-4896-9415-D8B098751A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B33574E2-130C-4896-9415-D8B098751A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B33574E2-130C-4896-9415-D8B098751A38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49BBE018-17E9-42B1-8CEC-F0426EDD242A}
+	EndGlobalSection
+EndGlobal
