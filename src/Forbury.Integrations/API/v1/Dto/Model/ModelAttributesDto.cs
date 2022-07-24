@@ -15,5 +15,8 @@ namespace Forbury.Integrations.API.v1.Dto.Model
         public string CreatedByEmail { get; set; }
         public int TeamId { get; set; }
         public string ExternalId { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ProductType ProductCreated { get; set; }
+        public string VersionCreated { get; set; }
     }
 }

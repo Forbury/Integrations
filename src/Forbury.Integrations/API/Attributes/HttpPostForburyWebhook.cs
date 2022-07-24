@@ -24,7 +24,7 @@ namespace Forbury.Integrations.API.Attributes
         {
             var configOptions = serviceProvider.GetService<IOptions<ForburyConfiguration>>();
             var matchString = _webhookConfigMatch ?? Template;
-            var webhookEndpointConfiguration = configOptions.Value.Webhooks?.SingleOrDefault(w => string.Equals(w.Endpoint ,matchString, StringComparison.CurrentCultureIgnoreCase));
+            var webhookEndpointConfiguration = configOptions.Value.Webhooks?.SingleOrDefault(w => string.Equals(w.Endpoint, matchString, StringComparison.CurrentCultureIgnoreCase));
 
             if (webhookEndpointConfiguration == null)
             {
