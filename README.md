@@ -11,7 +11,9 @@ To learn more about becoming a Forbury customer, or if you already are and would
 
 ## Documentation
 
-Full **API documentation** can be found [here](https://api.forbury.com/docs).
+[**Wiki page**](https://github.com/Forbury/Integrations/wiki) - Contains full documentation including examples.
+
+[**Swagger API documentation**](https://api.forbury.com/docs) - Contains the ability for sample requests and available endpoints.
 
 ## Quick Start Guide
 In order to get started, please follow these steps.
@@ -20,13 +22,19 @@ In order to get started, please follow these steps.
 
 _Package Manager_
 ```
-Install-Package Forbury.Integrations -Version 1.1.0
+Install-Package Forbury.Integrations -Version 1.2.0
 ```
 
 _.NET CLI_
 ```
-dotnet add PROJECT package Forbury.Integrations --version 1.1.0
+dotnet add PROJECT package Forbury.Integrations --version 1.2.0
 ```
+
+_PackageReference_
+```
+<PackageReference Include="Forbury.Integrations" Version="1.2.0" />
+```
+
 For a full list of the latest releases, please see the [package release page](https://www.nuget.org/packages/Forbury.Integrations).
 
 **2.** Add the following to your `appsettings.config` (replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET`)
@@ -45,7 +53,7 @@ For a full list of the latest releases, please see the [package release page](ht
 }
 ```
 
-**3.** Add the following inside your `Startup.cs`
+**3.** Add the following inside your `Startup.cs` _(.NET 3.1 and .NET 5)_.
 
 ```C#
 public IConfiguration Configuration { get; }
@@ -55,6 +63,16 @@ public void ConfigureServices(IServiceCollection services)
     services.AddForburyApi(Configuration);
     ...
 }
+```
+
+Alternatively, if you are using the new .NET 6 design **without** a `Startup.cs`, add the following inside your `Program.cs` _(.NET 6)_.
+
+```C#
+using Forbury.Integrations.API;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddForburyApi(builder.Configuration);
 ```
 
 You should now be ready to use the API!
