@@ -33,9 +33,7 @@ namespace Forbury.Integrations.API.v1.Clients
             if (!string.IsNullOrEmpty(externalId)) queryBuilder.Add("externalId", externalId);
             if (modelId.HasValue) queryBuilder.Add("modelId", modelId.ToString());
 
-            HttpResponseMessage response = await _httpClient.GetAsync($"{productType.ToString("d")}/download{queryBuilder.ToQueryString()}", cancellationToken);
-            await CatchResponseFailure(response);
-            return (await response.Content.ReadAsStreamAsync(), response.Content.Headers.ContentType.MediaType, response.Content.Headers.ContentDisposition.FileNameStar);
+            return await GetFileAsync($"{productType.ToString("d")}/download{queryBuilder.ToQueryString()}", cancellationToken);
         }
     }
 }
