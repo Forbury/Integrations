@@ -6,7 +6,7 @@
  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/forbury/integrations/CodeQL?label=Code%20Analysis)
  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/forbury/integrations/.NET?label=Build)
 
-This C# client library provides an easy way for integrating with Forbury external APIs.
+This .NET client library provides a quick & easy option for integrating with Forbury APIs.
 
 **_Note:_** In order to use this library, you must be an existing Forbury customer and have an API `ClientId` and `ClientSecret`.
 To learn more about becoming a Forbury customer, or if you already are and would like access, please [contact us](https://www.forbury.com/contact-us).
