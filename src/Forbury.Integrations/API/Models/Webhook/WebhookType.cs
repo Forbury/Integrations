@@ -2,6 +2,7 @@
 {
     public enum WebhookType
     {
-        ModelUploaded
+        ModelUploaded,
+        ModelExtractionsCompleted
     }
 }
