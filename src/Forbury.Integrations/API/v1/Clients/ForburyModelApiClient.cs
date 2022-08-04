@@ -55,5 +55,11 @@ namespace Forbury.Integrations.API.v1.Clients
         {
             return await GetFileAsync($"{modelId}/extraction/{extractionId}/download", cancellationToken);
         }
+
+        public async Task<(Stream FileStream, string ContentType, string FileName)> DownloadModelBackup(int modelId,
+            CancellationToken cancellationToken = default)
+        {
+            return await GetFileAsync($"{modelId}/backup/download", cancellationToken);
+        }
     }
 }

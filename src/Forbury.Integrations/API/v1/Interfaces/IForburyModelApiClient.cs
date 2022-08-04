@@ -29,5 +29,8 @@ namespace Forbury.Integrations.API.v1.Interfaces
         Task<(Stream FileStream, string ContentType, string FileName)> DownloadModelExtraction(int modelId,
             string extractionId,
             CancellationToken cancellationToken = default);
+
+        Task<(Stream FileStream, string ContentType, string FileName)> DownloadModelBackup(int modelId,
+            CancellationToken cancellationToken = default);
     }
 }
