@@ -1,22 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.2.1</Version>
+    <Version>1.3.0</Version>
     <Authors>Forbury Development Team</Authors>
     <Company>Forbury</Company>
-    <PackageDescription>
-      This client library provides an easy pathway for integrating with Forbury external APIs.
-      Forbury API documentation: https://api.forbury.com/docs
-    </PackageDescription>
+    <PackageDescription>This .NET client library provides a quick and easy option for integrating with Forbury APIs.</PackageDescription>
     <RepositoryUrl>https://github.com/Forbury/Integrations</RepositoryUrl>
-	<PackageIcon>logo_128x128.png</PackageIcon>
+    <PackageIcon>logo_128x128.png</PackageIcon>
+    <PackageTags>dotnet;fintech;finance;integrations</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
     <AssemblyName>Forbury.Integrations</AssemblyName>
     <PackageId>Forbury.Integrations</PackageId>
     <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup>

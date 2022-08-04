@@ -4,6 +4,7 @@ using Forbury.Integrations.API.v1.Interfaces;
 using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,6 +38,22 @@ namespace Forbury.Integrations.API.v1.Clients
             try
             {
                 return await response.Content.ReadAsObjectAsync<TResult>();
+            }
+            catch (Exception ex)
+            {
+                throw new ForburyApiException("Invalid response type.", ex);
+            }
+        }
+
+        protected async Task<(Stream FileStream, string ContentType, string FileName)> GetFileAsync(string requestUri, CancellationToken cancellationToken)
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync(requestUri, cancellationToken);
+
+            await CatchResponseFailure(response);
+
+            try
+            {
+                return (await response.Content.ReadAsStreamAsync(), response.Content.Headers.ContentType.MediaType, response.Content.Headers.ContentDisposition.FileNameStar);
             }
             catch (Exception ex)
             {
