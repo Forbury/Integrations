@@ -3,6 +3,7 @@
     public enum ModelExtractionType
     {
         Sheet = 0,
-        Chart = 1
+        Chart = 1,
+        Table = 2
     }
 }
