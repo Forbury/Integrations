@@ -28,5 +28,10 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Output.ValuationMethods.Discount
         public decimal Refurbishment { get; set; }
         public decimal BudgetedCapex { get; set; }
         public decimal SinkingFund { get; set; }
+
+        public decimal TotalCapitalExpenditure { get; set; }
+        public decimal TotalCapitalExpenditurePsqm { get; set; }
+        [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal TotalCapitalExpenditurePercent { get; set; }
+        public decimal TotalCapitalExpenditurePresentValue { get; set; }
     }
 }
