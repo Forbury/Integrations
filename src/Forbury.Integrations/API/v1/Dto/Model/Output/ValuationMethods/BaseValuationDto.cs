@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Forbury.Integrations.Helpers.Converters;
 using Newtonsoft.Json;
 
@@ -6,6 +7,9 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Output.ValuationMethods
 {
     public class BaseValuationDto
     {
+        [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)] public DateTime ExpiryAllowanceDate { get; set; }
+        public decimal ExpiryAllowanceNetLettableAreaPercent { get; set; }
+
         public List<RenewalTypeIncomeDto> RenewalTypeGrossMarketIncomes { get; set; }
         public decimal SundryIncomePA { get; set; }
 

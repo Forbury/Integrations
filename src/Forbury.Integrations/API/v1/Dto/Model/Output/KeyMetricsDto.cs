@@ -15,6 +15,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Output
         [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal TerminalYield { get; set; }
         [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal TenYearIRR { get; set; }
         public decimal CapitalValuePsqm { get; set; }
+        public decimal CapitalValueSiteAreaPsqm { get; set; }
         public decimal CapitalValueAdditionalLandPsqm { get; set; }
     }
 }
