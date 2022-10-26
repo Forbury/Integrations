@@ -3,6 +3,8 @@
     public enum ProductType
     {
         Commercial = 0,
-        Retail = 1
+        Retail = 1,
+        Datum = 11,
+        DatumPortfolio = 12
     }
 }

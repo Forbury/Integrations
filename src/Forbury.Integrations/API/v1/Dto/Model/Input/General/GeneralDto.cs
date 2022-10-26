@@ -23,5 +23,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Input.General
         public decimal? DiscountRate { get; set; }
         public decimal? CapRateTerminal { get; set; }
         public int CashFlowPeriod { get; set; }
+        public decimal? BudgetedCapexAllowanceMonths { get; set; }
+        public decimal? SinkingFundAllowanceMonths { get; set; }
     }
 }
