@@ -9,7 +9,7 @@ using Forbury.Integrations.API.v1.Dto.Team;
 
 namespace Forbury.Integrations.API.v1.Interfaces
 {
-    public interface IForburyTeamApiClient
+    public interface IForburyTeamApiClient : IForburyApiClient
     {
         Task<PagedResult<TeamDto>> GetTeams(int amount = 20, 
             int page = 1,

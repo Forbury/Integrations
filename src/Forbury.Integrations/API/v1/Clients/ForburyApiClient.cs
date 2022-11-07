@@ -20,6 +20,11 @@ namespace Forbury.Integrations.API.v1.Clients
             _httpClient = httpClient;
         }
 
+        public void SetClient(string name)
+        {
+            _httpClient.DefaultRequestHeaders.Add(Constants.ClientHeaderName, name);
+        }
+
         protected QueryBuilder GetPagedQueryBuilder(int amount, int page)
         {
             return new QueryBuilder

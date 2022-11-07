@@ -8,7 +8,7 @@ using Forbury.Integrations.API.v1.Dto.Property;
 
 namespace Forbury.Integrations.API.v1.Interfaces
 {
-    public interface IForburyPropertyApiClient
+    public interface IForburyPropertyApiClient : IForburyApiClient
     {
         Task<PagedResult<PropertyDto>> GetProperties(int amount = 20,
             int page = 1,

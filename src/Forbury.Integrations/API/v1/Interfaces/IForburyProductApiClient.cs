@@ -7,7 +7,7 @@ using Forbury.Integrations.API.v1.Dto.Product;
 
 namespace Forbury.Integrations.API.v1.Interfaces
 {
-    public interface IForburyProductApiClient
+    public interface IForburyProductApiClient : IForburyApiClient
     {
         Task<List<ProductDto>> GetProducts(CancellationToken cancellationToken = default);
 
