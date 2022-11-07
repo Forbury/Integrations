@@ -45,12 +45,5 @@ namespace Forbury.Integrations.API.v1.Clients
 
             return await GetAsync<PagedResult<ModelDto>>($"{propertyId}/model{queryBuilder.ToQueryString()}", cancellationToken);
         }
-
-        public async Task<ModelDetailedDto> GetModelByPropertyId(int propertyId,
-            int modelId,
-            CancellationToken cancellationToken = default)
-        {
-            return await GetAsync<ModelDetailedDto>($"{propertyId}/model/{modelId}", cancellationToken);
-        }
     }
 }

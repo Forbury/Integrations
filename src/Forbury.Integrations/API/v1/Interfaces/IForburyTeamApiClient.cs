@@ -25,10 +25,6 @@ namespace Forbury.Integrations.API.v1.Interfaces
             int page = 1,
             CancellationToken cancellationToken = default);
 
-        Task<ModelDetailedDto> GetModelByTeamId(int teamId,
-            int modelId,
-            CancellationToken cancellationToken = default);
-
         Task<PagedResult<PropertyDto>> GetPropertiesByTeamId(int teamId,
             int amount = 20,
             int page = 1,

@@ -23,9 +23,5 @@ namespace Forbury.Integrations.API.v1.Interfaces
             int amount = 20,
             int page = 1,
             CancellationToken cancellationToken = default);
-
-        Task<ModelDetailedDto> GetModelByPropertyId(int propertyId,
-            int modelId,
-            CancellationToken cancellationToken = default);
     }
 }

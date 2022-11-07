@@ -3,9 +3,13 @@ using Forbury.Integrations.API.Models;
 using Forbury.Integrations.API.v1.Interfaces;
 using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Net.Mime;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -37,6 +41,26 @@ namespace Forbury.Integrations.API.v1.Clients
         protected async Task<TResult> GetAsync<TResult>(string requestUri, CancellationToken cancellationToken)
         {
             HttpResponseMessage response = await _httpClient.GetAsync(requestUri, cancellationToken);
+
+            await CatchResponseFailure(response);
+
+            try
+            {
+                return await response.Content.ReadAsObjectAsync<TResult>();
+            }
+            catch (Exception ex)
+            {
+                throw new ForburyApiException("Invalid response type.", ex);
+            }
+        }
+
+        protected async Task<TResult> PostAsync<TRequest, TResult>(string requestUri, TRequest requestBody, CancellationToken cancellationToken)
+        {
+            var serializedBody = JsonConvert.SerializeObject(requestBody, new JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+
+            HttpResponseMessage response = await _httpClient.PostAsync(requestUri,
+                new StringContent(serializedBody, Encoding.UTF8, MediaTypeNames.Application.Json), 
+                cancellationToken);
 
             await CatchResponseFailure(response);
 

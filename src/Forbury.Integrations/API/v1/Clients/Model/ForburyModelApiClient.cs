@@ -7,12 +7,12 @@ using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.File;
 using Forbury.Integrations.API.v1.Dto.Model;
-using Forbury.Integrations.API.v1.Interfaces;
+using Forbury.Integrations.API.v1.Interfaces.Model;
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace Forbury.Integrations.API.v1.Clients
+namespace Forbury.Integrations.API.v1.Clients.Model
 {
-    public class ForburyModelApiClient : ForburyApiClient, IForburyModelApiClient
+    public abstract class ForburyModelApiClient : ForburyApiClient, IForburyModelApiClient
     {
         public ForburyModelApiClient(HttpClient httpClient) :
             base(httpClient)
@@ -31,16 +31,10 @@ namespace Forbury.Integrations.API.v1.Clients
             return await GetAsync<PagedResult<ModelDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);
         }
 
-        public async Task<ModelDetailedDto> GetModelById(int modelId,
-            CancellationToken cancellationToken = default)
-        {
-            return await GetAsync<ModelDetailedDto>($"{modelId}", cancellationToken);
-        }
-
-        public async Task<PagedResult<ModelExtractionDto>> GetModelExtractionsById(int modelId, 
-            ModelExtractFileType? fileType = null, 
-            int amount = 20, 
-            int page = 1, 
+        public async Task<PagedResult<ModelExtractionDto>> GetModelExtractionsById(int modelId,
+            ModelExtractFileType? fileType = null,
+            int amount = 20,
+            int page = 1,
             CancellationToken cancellationToken = default)
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
@@ -50,7 +44,7 @@ namespace Forbury.Integrations.API.v1.Clients
         }
 
         public async Task<(Stream FileStream, string ContentType, string FileName)> DownloadModelExtraction(int modelId,
-            string extractionId, 
+            string extractionId,
             CancellationToken cancellationToken = default)
         {
             return await GetFileAsync($"{modelId}/extraction/{extractionId}/download", cancellationToken);

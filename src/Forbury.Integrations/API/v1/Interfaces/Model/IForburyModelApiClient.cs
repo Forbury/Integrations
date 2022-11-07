@@ -7,17 +7,14 @@ using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.File;
 using Forbury.Integrations.API.v1.Dto.Model;
 
-namespace Forbury.Integrations.API.v1.Interfaces
+namespace Forbury.Integrations.API.v1.Interfaces.Model
 {
-    public interface IForburyModelApiClient
+    public interface IForburyModelApiClient : IForburyApiClient
     {
         Task<PagedResult<ModelDto>> GetModels(DateTime? fromDate = null,
             ModelType? modelType = null,
             int amount = 20,
             int page = 1,
-            CancellationToken cancellationToken = default);
-
-        Task<ModelDetailedDto> GetModelById(int modelId,
             CancellationToken cancellationToken = default);
 
         Task<PagedResult<ModelExtractionDto>> GetModelExtractionsById(int modelId,
