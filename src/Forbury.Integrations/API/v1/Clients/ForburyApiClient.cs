@@ -26,6 +26,11 @@ namespace Forbury.Integrations.API.v1.Clients
 
         public void SetClient(string name)
         {
+            if (_httpClient.DefaultRequestHeaders.Contains(Constants.ClientHeaderName))
+            {
+                _httpClient.DefaultRequestHeaders.Remove(Constants.ClientHeaderName);
+            }
+
             _httpClient.DefaultRequestHeaders.Add(Constants.ClientHeaderName, name);
         }
 
@@ -59,7 +64,7 @@ namespace Forbury.Integrations.API.v1.Clients
             var serializedBody = JsonConvert.SerializeObject(requestBody, new JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver() });
 
             HttpResponseMessage response = await _httpClient.PostAsync(requestUri,
-                new StringContent(serializedBody, Encoding.UTF8, MediaTypeNames.Application.Json), 
+                new StringContent(serializedBody, Encoding.UTF8, MediaTypeNames.Application.Json),
                 cancellationToken);
 
             await CatchResponseFailure(response);

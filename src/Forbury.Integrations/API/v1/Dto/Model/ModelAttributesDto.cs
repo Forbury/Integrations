@@ -9,7 +9,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model
     {
         public int ModelId { get; set; }
         public string ModelName { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))] 
+        [JsonConverter(typeof(StringEnumConverter))]
         public ModelType Type { get; set; }
         public DateTimeOffset CreatedOn { get; set; }
         public string CreatedByEmail { get; set; }

@@ -6,12 +6,14 @@ using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.File;
 using Forbury.Integrations.API.v1.Dto.Model;
+using Forbury.Integrations.API.v1.Interfaces;
 
 namespace Forbury.Integrations.API.v1.Interfaces.Model
 {
     public interface IForburyModelApiClient : IForburyApiClient
     {
-        Task<PagedResult<ModelDto>> GetModels(DateTime? fromDate = null,
+        Task<PagedResult<ModelDto>> GetModels(ProductType? productType,
+            DateTime? fromDate = null,
             ModelType? modelType = null,
             int amount = 20,
             int page = 1,

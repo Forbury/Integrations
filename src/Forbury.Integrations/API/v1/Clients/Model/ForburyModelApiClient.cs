@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Forbury.Integrations.API.v1.Clients;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.File;
@@ -18,14 +19,16 @@ namespace Forbury.Integrations.API.v1.Clients.Model
             base(httpClient)
         { }
 
-        public async Task<PagedResult<ModelDto>> GetModels(DateTime? fromDate = null,
-           ModelType? modelType = null,
-           int amount = 20,
-           int page = 1,
-           CancellationToken cancellationToken = default)
+        public async Task<PagedResult<ModelDto>> GetModels(ProductType? productType = null,
+            DateTime? fromDate = null,
+            ModelType? modelType = null,
+            int amount = 20,
+            int page = 1,
+            CancellationToken cancellationToken = default)
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
             if (fromDate != null) queryBuilder.Add("fromDate", fromDate.ToString());
+            if (productType != null) queryBuilder.Add("productType", modelType.Value.ToString("d"));
             if (modelType != null) queryBuilder.Add("modelType", modelType.Value.ToString("d"));
 
             return await GetAsync<PagedResult<ModelDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);

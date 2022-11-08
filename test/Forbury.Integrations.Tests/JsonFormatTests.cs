@@ -1,5 +1,5 @@
 using Forbury.Integrations.API;
-using Forbury.Integrations.API.v1.Dto.Model.Input.General;
+using Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.General;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;

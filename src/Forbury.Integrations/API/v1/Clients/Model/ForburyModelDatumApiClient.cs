@@ -18,7 +18,7 @@ namespace Forbury.Integrations.API.v1.Clients.Model
         public async Task<ModelDatumDetailedDto> GetModelById(int modelId,
             CancellationToken cancellationToken = default)
         {
-            return await GetAsync<ModelDatumDetailedDto>($"{modelId}", cancellationToken);
+            return await GetAsync<ModelDatumDetailedDto>($"datum/{modelId}", cancellationToken);
         }
 
         public async Task<ModelDto> CreateModel(ModelDatumInputDto data,
@@ -30,7 +30,7 @@ namespace Forbury.Integrations.API.v1.Clients.Model
             queryBuilder.Add("googlePropertyId", googlePropertyId);
             if (teamId != null) queryBuilder.Add("teamId", teamId.ToString());
 
-            return await PostAsync<ModelDatumInputDto, ModelDto>($"{queryBuilder.ToQueryString()}", data, cancellationToken);
+            return await PostAsync<ModelDatumInputDto, ModelDto>($"datum/{queryBuilder.ToQueryString()}", data, cancellationToken);
         }
     }
 }

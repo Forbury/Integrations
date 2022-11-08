@@ -18,6 +18,7 @@ namespace Forbury.Integrations.API.v1.Interfaces
             CancellationToken cancellationToken = default);
 
         Task<PagedResult<ModelDto>> GetModelsByPropertyId(int propertyId,
+            ProductType? productType = null,
             DateTime? fromDate = null,
             ModelType? modelType = null,
             int amount = 20,

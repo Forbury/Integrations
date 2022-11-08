@@ -1,12 +1,12 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Forbury.Integrations.API.v1.Dto.Model;
+using Forbury.Integrations.API.v1.Dto.Model.Commercial;
 
 namespace Forbury.Integrations.API.v1.Interfaces.Model
 {
     public interface IForburyModelCommercialApiClient : IForburyModelApiClient
     {
-        Task<ModelDetailedDto> GetModelById(int modelId,
+        Task<ModelCommercialDetailedDto> GetModelById(int modelId,
             CancellationToken cancellationToken = default);
     }
 }

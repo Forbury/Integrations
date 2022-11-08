@@ -33,6 +33,7 @@ namespace Forbury.Integrations.API.v1.Clients
         }
 
         public async Task<PagedResult<ModelDto>> GetModelsByPropertyId(int propertyId,
+            ProductType? productType = null,
             DateTime? fromDate = null,
             ModelType? modelType = null,
             int amount = 20,
@@ -41,6 +42,7 @@ namespace Forbury.Integrations.API.v1.Clients
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
             if (fromDate != null) queryBuilder.Add("fromDate", fromDate.ToString());
+            if (productType != null) queryBuilder.Add("productType", modelType.Value.ToString("d"));
             if (modelType != null) queryBuilder.Add("modelType", modelType.Value.ToString("d"));
 
             return await GetAsync<PagedResult<ModelDto>>($"{propertyId}/model{queryBuilder.ToQueryString()}", cancellationToken);

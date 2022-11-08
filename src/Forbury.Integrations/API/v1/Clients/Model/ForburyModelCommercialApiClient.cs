@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Forbury.Integrations.API.v1.Dto.Model;
+using Forbury.Integrations.API.v1.Dto.Model.Commercial;
 using Forbury.Integrations.API.v1.Interfaces.Model;
 
 namespace Forbury.Integrations.API.v1.Clients.Model
@@ -12,10 +12,10 @@ namespace Forbury.Integrations.API.v1.Clients.Model
             base(httpClient)
         { }
 
-        public async Task<ModelDetailedDto> GetModelById(int modelId,
+        public async Task<ModelCommercialDetailedDto> GetModelById(int modelId,
             CancellationToken cancellationToken = default)
         {
-            return await GetAsync<ModelDetailedDto>($"{modelId}", cancellationToken);
+            return await GetAsync<ModelCommercialDetailedDto>($"commercial/{modelId}", cancellationToken);
         }
     }
 }
