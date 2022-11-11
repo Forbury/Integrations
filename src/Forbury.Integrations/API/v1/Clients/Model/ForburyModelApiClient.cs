@@ -27,9 +27,9 @@ namespace Forbury.Integrations.API.v1.Clients.Model
             CancellationToken cancellationToken = default)
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
-            if (fromDate != null) queryBuilder.Add("fromDate", fromDate.ToString());
-            if (productType != null) queryBuilder.Add("productType", modelType.Value.ToString("d"));
-            if (modelType != null) queryBuilder.Add("modelType", modelType.Value.ToString("d"));
+            if (fromDate.HasValue) queryBuilder.Add("fromDate", fromDate.ToString());
+            if (productType.HasValue) queryBuilder.Add("productType", modelType.Value.ToString("d"));
+            if (modelType.HasValue) queryBuilder.Add("modelType", modelType.Value.ToString("d"));
 
             return await GetAsync<PagedResult<ModelDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);
         }
@@ -41,7 +41,7 @@ namespace Forbury.Integrations.API.v1.Clients.Model
             CancellationToken cancellationToken = default)
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
-            if (fileType != null) queryBuilder.Add("fileType", fileType.ToString());
+            if (fileType.HasValue) queryBuilder.Add("fileType", fileType.ToString());
 
             return await GetAsync<PagedResult<ModelExtractionDto>>($"{modelId}/extraction{queryBuilder.ToQueryString()}", cancellationToken);
         }

@@ -14,6 +14,8 @@ namespace Forbury.Integrations.API.v1.Interfaces.Model
         Task<ModelDto> CreateModel(ModelDatumInputDto data,
             string googlePropertyId,
             int? teamId,
+            string externalId = null,
+            string fullAddress = null,
             CancellationToken cancellationToken = default);
     }
 }
