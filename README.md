@@ -52,8 +52,8 @@ If you only have one client, you **will not** need to choose which client to mak
   },
   "Authentication": {
     "Url": "https://account.forbury.com/",
-	"Clients": {
-	  "UNIQUE_CLIENT_NAME": {
+    "Clients": {
+      "UNIQUE_CLIENT_NAME": {
         "ClientId": "YOUR_CLIENT_ID",
         "ClientSecret": "YOUR_CLIENT_SECRET"
       },
@@ -61,7 +61,7 @@ If you only have one client, you **will not** need to choose which client to mak
         "ClientId": "YOUR_CLIENT_ID",
         "ClientSecret": "YOUR_CLIENT_SECRET"
       }
-	}
+    }
   }
 }
 ```
