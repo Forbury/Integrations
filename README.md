@@ -39,7 +39,10 @@ _PackageReference_
 
 For a full list of the latest releases, please see the [package release page](https://www.nuget.org/packages/Forbury.Integrations).
 
-**2.** Add the following to your `appsettings.config` (replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET`)
+**2.** Add the following to your `appsettings.config` (replace `UNIQUE_CLIENT_NAME`, `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET`).
+
+This library supports a multi-client environment, `UNIQUE_CLIENT_NAME` can be any internal reference name you like for accessing the client.
+If you only have one client, you **will not** need to choose which client to make calls with during runtime (please see [example below](#Example-API-Usage)).
 
 ```json
 "Forbury": {
@@ -49,9 +52,17 @@ For a full list of the latest releases, please see the [package release page](ht
   },
   "Authentication": {
     "Url": "https://account.forbury.com/",
-    "ClientId": "YOUR_CLIENT_ID",
-    "ClientSecret": "YOUR_CLIENT_SECRET"
-  } 
+	"Clients": {
+	  "UNIQUE_CLIENT_NAME": {
+        "ClientId": "YOUR_CLIENT_ID",
+        "ClientSecret": "YOUR_CLIENT_SECRET"
+      },
+      "UNIQUE_CLIENT_NAME": {
+        "ClientId": "YOUR_CLIENT_ID",
+        "ClientSecret": "YOUR_CLIENT_SECRET"
+      }
+	}
+  }
 }
 ```
 
@@ -97,6 +108,9 @@ public class ForburyDataService
     public ForburyDataService(IForburyTeamApiClient forburyTeamApiClient)
     {
         _forburyTeamApiClient = forburyTeamApiClient;
+
+        // NOTE: In a multi-client environment, you will need to set the client
+        _forburyTeamApiClient.SetClient("UNIQUE_CLIENT_NAME");
     }
 
     public async Task GetTeams(int amount = 20, int page = 1)
