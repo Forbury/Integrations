@@ -8,5 +8,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space.Lease
         public DateTime? StartDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
         public decimal? BaseRent { get; set; }
+        public DateTime? BreakDate { get; set; }
+        public bool? IsBreakActive { get; set; }
     }
 }

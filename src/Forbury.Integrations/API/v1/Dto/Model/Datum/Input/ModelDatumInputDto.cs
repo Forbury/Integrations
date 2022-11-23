@@ -9,7 +9,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input
     {
         public List<DatumSpaceDto> Spaces { get; set; }
 
-        public DateTime? ValuationDate { get; set; }
+        public DateTime? AcquisitionDate { get; set; }
         public int? HoldPeriodMonths { get; set; }
         public EntryExitTypes? EntryMethod { get; set; }
         public EntryExitTypes? ExitMethod { get; set; }
