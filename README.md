@@ -1,4 +1,4 @@
-![Forbury](https://portal.forbury.com/assets/img/logo_text.png)﻿
+![Forbury](https://raw.githubusercontent.com/Forbury/Integrations/master/assets/logo/logo_text.png)﻿
 # Forbury Integrations
  
  [![NuGet](https://img.shields.io/nuget/v/Forbury.Integrations)](https://www.nuget.org/packages/Forbury.Integrations)
