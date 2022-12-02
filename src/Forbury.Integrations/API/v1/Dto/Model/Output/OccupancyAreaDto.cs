@@ -15,6 +15,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Output
         [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal VacantAreaPercent { get; set; }
         [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal VacantIncomePercent { get; set; }
         public int VacantTenantsCount { get; set; }
+        public int TenantsCount { get; set; }
 
         public decimal CarBays { get; set; }
         [JsonConverter(typeof(DecimalRoundingConverter), 2)] public decimal CarParkRatio { get; set; }
