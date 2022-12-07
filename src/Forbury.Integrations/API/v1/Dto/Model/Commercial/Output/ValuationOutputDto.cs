@@ -10,5 +10,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output
         public OccupancyAreaDto OccupancyArea { get; set; }
         public CapitalisationDto Capitalisation { get; set; }
         public DiscountedCashflowDto DiscountedCashflow { get; set; }
+        public GrowthAssumptionsDto GrowthAssumptions { get; set; }
+        public CapexAssumptionsDto CapexAssumptions { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output.ValuationMetho
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)] public DateTime ExpiryAllowanceDate { get; set; }
         public decimal ExpiryAllowanceNetLettableAreaPercent { get; set; }
 
-        public List<RenewalTypeIncomeDto> RenewalTypeGrossMarketIncomes { get; set; }
+        public List<RenewalTypeGrossIncomeDto> RenewalTypeGrossMarketIncomes { get; set; }
         public decimal SundryIncomePA { get; set; }
 
         public CapitalValuesDto CapitalValues { get; set; }

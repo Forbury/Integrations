@@ -2,6 +2,7 @@
 {
     public class ReportingDto
     {
+        public string Proprietor { get; set; }
         public decimal? SiteArea { get; set; }
         public string LegalDescription { get; set; }
         public string LocalGovernmentArea { get; set; }
@@ -11,15 +12,20 @@
         public decimal? NabersEnergy { get; set; }
         public decimal? NabersWater { get; set; }
         public string YearBuilt { get; set; }
+        public string LastRefurbYear { get; set; }
         public string Sector { get; set; }
         public string SubSector { get; set; }
         public string Precinct { get; set; }
         public string Grade { get; set; }
+        public string OfficeFloors { get; set; }
+        public string EndOfTrip { get; set; }
         public string PcaMarket { get; set; }
         public string PcaCharacteristic { get; set; }
+        public string AreaLabels { get; set; }
         public string Title { get; set; }
         public string Company { get; set; }
         public string JobReference { get; set; }
+        public string Purpose { get; set; }
         public string PrimaryValuer { get; set; }
         public string SecondaryValuer { get; set; }
     }

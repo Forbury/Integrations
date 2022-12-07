@@ -1,8 +1,8 @@
 ﻿namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output
 {
-    public class RenewalTypeAreaDto
+    public class RenewalTypeAreaDto : RenewalTypeDto
     {
-        public string Name { get; set; }
         public decimal Area { get; set; }
+        public int TenantsCount { get; set; }
     }
 }

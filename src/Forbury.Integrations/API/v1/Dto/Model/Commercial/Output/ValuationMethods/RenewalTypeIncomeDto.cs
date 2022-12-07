@@ -1,8 +1,9 @@
-﻿namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output.ValuationMethods
+﻿using Forbury.Integrations.API.v1.Dto.Model.Output;
+
+namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output.ValuationMethods
 {
-    public class RenewalTypeIncomeDto
+    public class RenewalTypeGrossIncomeDto : RenewalTypeDto
     {
-        public string Name { get; set; }
         public decimal IncomePA { get; set; }
     }
 }

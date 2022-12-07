@@ -12,9 +12,14 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output
         public decimal OccupiedArea { get; set; }
         [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal OccupiedPercent { get; set; }
         public decimal VacantArea { get; set; }
+        [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal VacantAreaPercent { get; set; }
+        [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal VacantIncomePercent { get; set; }
+        public int VacantTenantsCount { get; set; }
+        public int TenantsCount { get; set; }
 
-        [JsonConverter(typeof(DecimalRoundingConverter), 6)] public decimal VacancyIncomePercent { get; set; }
         public decimal CarBays { get; set; }
+        [JsonConverter(typeof(DecimalRoundingConverter), 2)] public decimal CarParkRatio { get; set; }
+        [JsonConverter(typeof(DecimalRoundingConverter), 2)] public decimal LettableAreaPerCarPark { get; set; }
 
         [JsonConverter(typeof(DecimalRoundingConverter), 4)] public decimal WALEByIncome { get; set; }
         [JsonConverter(typeof(DecimalRoundingConverter), 4)] public decimal WALEByArea { get; set; }
