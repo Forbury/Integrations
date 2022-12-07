@@ -5,6 +5,7 @@ using Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.General;
 using Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Outgoings;
 using Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Reporting;
 using Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Space;
+using Forbury.Integrations.API.v1.Dto.Model.Interfaces;
 
 namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input
 {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Forbury.Integrations.API.v1.Dto.Model.Interfaces;
 
 namespace Forbury.Integrations.API.v1.Dto.Model
 {
@@ -10,8 +11,4 @@ namespace Forbury.Integrations.API.v1.Dto.Model
         public TOutput Outputs { get; set; }
         public Dictionary<string, dynamic> CustomFields { get; set; }
     }
-
-    public interface IModelInput { }
-
-    public interface IModelOutput { }
 }

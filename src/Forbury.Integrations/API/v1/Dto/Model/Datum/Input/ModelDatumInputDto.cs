@@ -1,5 +1,6 @@
 ﻿using Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Enums;
 using Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space;
+using Forbury.Integrations.API.v1.Dto.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 

@@ -1,5 +1,6 @@
 ﻿using Forbury.Integrations.API.v1.Dto.Model.Commercial.Output.ValuationMethods.Capitalisation;
 using Forbury.Integrations.API.v1.Dto.Model.Commercial.Output.ValuationMethods.DiscountedCashflow;
+using Forbury.Integrations.API.v1.Dto.Model.Interfaces;
 
 namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output
 {
