@@ -1,7 +1,7 @@
 ﻿using Forbury.Integrations.Helpers.Converters;
 using Newtonsoft.Json;
 
-namespace Forbury.Integrations.API.v1.Dto.Model.Output
+namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output
 {
     public class RenewalTypeGrowthDto : RenewalTypeDto
     {

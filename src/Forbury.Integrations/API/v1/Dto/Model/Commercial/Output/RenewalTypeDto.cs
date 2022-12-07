@@ -1,6 +1,6 @@
 ﻿using Forbury.Integrations.API.v1.Dto.Enums;
 
-namespace Forbury.Integrations.API.v1.Dto.Model.Output
+namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output
 {
     public abstract class RenewalTypeDto
     {

@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Forbury.Integrations.API.v1.Dto.Model.Output
+namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Output
 {
     public class GrowthAssumptionsDto
     {
