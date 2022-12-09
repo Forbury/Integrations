@@ -3,7 +3,6 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Forbury.Integrations.API.v1.Clients;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.File;
@@ -13,7 +12,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Forbury.Integrations.API.v1.Clients.Model
 {
-    public abstract class ForburyModelApiClient : ForburyApiClient, IForburyModelApiClient
+    public class ForburyModelApiClient : ForburyApiClient, IForburyModelApiClient
     {
         public ForburyModelApiClient(HttpClient httpClient) :
             base(httpClient)
@@ -28,7 +27,7 @@ namespace Forbury.Integrations.API.v1.Clients.Model
         {
             QueryBuilder queryBuilder = GetPagedQueryBuilder(amount, page);
             if (fromDate.HasValue) queryBuilder.Add("fromDate", fromDate.ToString());
-            if (productType.HasValue) queryBuilder.Add("productType", modelType.Value.ToString("d"));
+            if (productType.HasValue) queryBuilder.Add("productType", productType.Value.ToString("d"));
             if (modelType.HasValue) queryBuilder.Add("modelType", modelType.Value.ToString("d"));
 
             return await GetAsync<PagedResult<ModelDto>>($"{queryBuilder.ToQueryString()}", cancellationToken);

@@ -10,6 +10,7 @@ namespace Forbury.Integrations.API.v1
     {
         internal static void AddForburyServices(IServiceCollection services, string uriPrefix)
         {
+            services.AddForburyHttpClient<IForburyModelApiClient, ForburyModelApiClient>(uriPrefix, "model");
             services.AddForburyHttpClient<IForburyModelDatumApiClient, ForburyModelDatumApiClient>(uriPrefix, "model");
             services.AddForburyHttpClient<IForburyModelCommercialApiClient, ForburyModelCommercialApiClient>(uriPrefix, "model");
             services.AddForburyHttpClient<IForburyProductApiClient, ForburyProductApiClient>(uriPrefix, "product");
