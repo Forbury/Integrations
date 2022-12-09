@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.5.0-beta5</Version>
+    <Version>1.5.0</Version>
     <Authors>Forbury Development Team</Authors>
     <Company>Forbury</Company>
     <PackageDescription>This .NET client library provides a quick and easy option for integrating with Forbury APIs.</PackageDescription>
