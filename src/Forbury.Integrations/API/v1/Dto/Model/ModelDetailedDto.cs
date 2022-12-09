@@ -1,13 +1,14 @@
-﻿using Forbury.Integrations.API.v1.Dto.Model.Input;
-using Forbury.Integrations.API.v1.Dto.Model.Output;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Forbury.Integrations.API.v1.Dto.Model.Interfaces;
 
 namespace Forbury.Integrations.API.v1.Dto.Model
 {
-    public class ModelDetailedDto : ModelDto
+    public abstract class ModelDetailedDto<TInput, TOutput> : ModelDto
+        where TInput : IModelInput
+        where TOutput : IModelOutput
     {
-        public ValuationInputDto Inputs { get; set; }
-        public ValuationOutputDto Outputs { get; set; }
+        public TInput Inputs { get; set; }
+        public TOutput Outputs { get; set; }
         public Dictionary<string, dynamic> CustomFields { get; set; }
     }
 }

@@ -9,9 +9,9 @@ using Forbury.Integrations.API.v1.Dto.Team;
 
 namespace Forbury.Integrations.API.v1.Interfaces
 {
-    public interface IForburyTeamApiClient
+    public interface IForburyTeamApiClient : IForburyApiClient
     {
-        Task<PagedResult<TeamDto>> GetTeams(int amount = 20, 
+        Task<PagedResult<TeamDto>> GetTeams(int amount = 20,
             int page = 1,
             CancellationToken cancellationToken = default);
 
@@ -19,14 +19,11 @@ namespace Forbury.Integrations.API.v1.Interfaces
             CancellationToken cancellationToken = default);
 
         Task<PagedResult<ModelDto>> GetModelsByTeamId(int teamId,
+            ProductType? productType = null,
             DateTime? fromDate = null,
             ModelType? modelType = null,
             int amount = 20,
             int page = 1,
-            CancellationToken cancellationToken = default);
-
-        Task<ModelDetailedDto> GetModelByTeamId(int teamId,
-            int modelId,
             CancellationToken cancellationToken = default);
 
         Task<PagedResult<PropertyDto>> GetPropertiesByTeamId(int teamId,
