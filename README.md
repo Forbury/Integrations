@@ -3,8 +3,8 @@
  
  [![NuGet](https://img.shields.io/nuget/v/Forbury.Integrations)](https://www.nuget.org/packages/Forbury.Integrations)
  [![Licence](https://img.shields.io/github/license/Forbury/Integrations)](LICENCE.txt)
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/forbury/integrations/CodeQL?label=Code%20Analysis)
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/forbury/integrations/.NET?label=Build)
+ ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/forbury/integrations/codeql.yml?label=Code%20Analysis)
+ ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/forbury/integrations/dotnet.yml?label=Build)
 
 This .NET client library provides a quick & easy option for integrating with Forbury APIs.
 
