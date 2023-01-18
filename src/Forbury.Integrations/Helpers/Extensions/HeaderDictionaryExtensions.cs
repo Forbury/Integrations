@@ -26,7 +26,7 @@ namespace Forbury.Integrations.Helpers.Extensions
 
             var receivedSignature =
                 headers[Constants.SignatureHeaderName].ToString()
-                    .Split("=");
+                    .Split('=');
 
             string computedSignature;
             switch (receivedSignature[0])

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.5.0</Version>
+    <Version>1.6.0-beta</Version>
     <Authors>Forbury Development Team</Authors>
     <Company>Forbury</Company>
     <PackageDescription>This .NET client library provides a quick and easy option for integrating with Forbury APIs.</PackageDescription>
@@ -14,7 +14,7 @@
   <PropertyGroup>
     <AssemblyName>Forbury.Integrations</AssemblyName>
     <PackageId>Forbury.Integrations</PackageId>
-    <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net48;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

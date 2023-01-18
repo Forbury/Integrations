@@ -8,12 +8,15 @@ namespace Forbury.Integrations.API.v1.Extensions
     {
         public static string ToMediaType(this ModelExtractFileType contentType)
         {
-            return contentType switch
+            switch (contentType)
             {
-                ModelExtractFileType.Pdf => MediaTypeNames.Application.Pdf,
-                ModelExtractFileType.Jpeg => MediaTypeNames.Image.Jpeg,
-                _ => throw new NotSupportedException("Content type not supported.")
-            };
+                case ModelExtractFileType.Pdf:
+                    return MediaTypeNames.Application.Pdf;
+                case ModelExtractFileType.Jpeg:
+                    return MediaTypeNames.Image.Jpeg;
+                default:
+                    throw new NotSupportedException("Content type not supported.");
+            }
         }
     }
 }

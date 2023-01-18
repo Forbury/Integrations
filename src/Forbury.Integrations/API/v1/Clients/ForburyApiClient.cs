@@ -17,6 +17,8 @@ namespace Forbury.Integrations.API.v1.Clients
 {
     public abstract class ForburyApiClient : IForburyApiClient
     {
+        const string ApplicationJson = "application/json";
+
         protected readonly HttpClient _httpClient;
 
         public ForburyApiClient(HttpClient httpClient)
@@ -64,7 +66,7 @@ namespace Forbury.Integrations.API.v1.Clients
             var serializedBody = JsonConvert.SerializeObject(requestBody, new JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver() });
 
             HttpResponseMessage response = await _httpClient.PostAsync(requestUri,
-                new StringContent(serializedBody, Encoding.UTF8, MediaTypeNames.Application.Json),
+                new StringContent(serializedBody, Encoding.UTF8, ApplicationJson),
                 cancellationToken);
 
             await CatchResponseFailure(response);
