@@ -24,17 +24,17 @@ In order to get started, please follow these steps.
 
 _Package Manager_
 ```
-Install-Package Forbury.Integrations -Version 1.2.0
+Install-Package Forbury.Integrations -Version 1.5.0
 ```
 
 _.NET CLI_
 ```
-dotnet add PROJECT package Forbury.Integrations --version 1.2.0
+dotnet add PROJECT package Forbury.Integrations --version 1.5.0
 ```
 
 _PackageReference_
 ```
-<PackageReference Include="Forbury.Integrations" Version="1.2.0" />
+<PackageReference Include="Forbury.Integrations" Version="1.5.0" />
 ```
 
 For a full list of the latest releases, please see the [package release page](https://www.nuget.org/packages/Forbury.Integrations).
