@@ -24,17 +24,17 @@ In order to get started, please follow these steps.
 
 _Package Manager_
 ```
-Install-Package Forbury.Integrations -Version 1.5.0
+Install-Package Forbury.Integrations -Version 1.7.0
 ```
 
 _.NET CLI_
 ```
-dotnet add PROJECT package Forbury.Integrations --version 1.5.0
+dotnet add PROJECT package Forbury.Integrations --version 1.7.0
 ```
 
 _PackageReference_
 ```
-<PackageReference Include="Forbury.Integrations" Version="1.5.0" />
+<PackageReference Include="Forbury.Integrations" Version="1.7.0" />
 ```
 
 For a full list of the latest releases, please see the [package release page](https://www.nuget.org/packages/Forbury.Integrations).
@@ -72,13 +72,48 @@ If you only have one client, you **will not** need to choose which client to mak
 public IConfiguration Configuration { get; }
 
 public void ConfigureServices(IServiceCollection services)
-{        
+{
     services.AddForburyApi(Configuration);
     ...
 }
 ```
 
-Alternatively, if you are using the new .NET 6 design **without** a `Startup.cs`, add the following inside your `Program.cs` _(.NET 6)_.
+Alternatively, you are able to create your own configuration object and pass that in as parameter instead.
+This gives you the flexibility to build your configuration outside the standard `appsettings.json` structure.
+
+```C#
+public void ConfigureServices(IServiceCollection services)
+{
+    var forburyConfiguration = new ForburyConfiguration()
+    {
+        Api = new ApiConfiguration()
+        {
+            Url = "https://api.forbury.com/",
+            Version = 1
+        },
+        Authentication = new AuthenticationConfiguration()
+        {
+            Url = "https://account.forbury.com/",
+            Clients = new Dictionary<string, AuthenticationClientConfiguration>()
+            {
+                {
+                    "UNIQUE_CLIENT_NAME", 
+                    new AuthenticationClientConfiguration()
+                    {
+                        ClientId = "YOUR_CLIENT_ID",
+                        ClientSecret = "YOUR_CLIENT_SECRET"
+                    }
+                }
+            }
+        }
+    };
+
+    services.AddForburyApi(forburyConfiguration);
+    ...
+}
+```
+
+_Note:_ If you are using the new .NET 6 design **without** a `Startup.cs`, add the following inside your `Program.cs` _(.NET 6)_.
 
 ```C#
 using Forbury.Integrations.API;
