@@ -12,6 +12,9 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Forbury.Integrations.API.Models.Configuration;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 namespace Forbury.Integrations.API.v1.Clients
 {
@@ -21,9 +24,13 @@ namespace Forbury.Integrations.API.v1.Clients
 
         protected readonly HttpClient _httpClient;
 
-        public ForburyApiClient(HttpClient httpClient)
+        private readonly ForburyConfiguration _configuration;
+
+        public ForburyApiClient(HttpClient httpClient,
+            IOptions<ForburyConfiguration> configuration)
         {
             _httpClient = httpClient;
+            _configuration = configuration.Value;
         }
 
         public void SetClient(string name)
@@ -34,6 +41,15 @@ namespace Forbury.Integrations.API.v1.Clients
             }
 
             _httpClient.DefaultRequestHeaders.Add(Constants.ClientHeaderName, name);
+        }
+
+        public void SetClient(string name, AuthenticationClientConfiguration clientConfiguration)
+        {
+            // Try remove and then add new client
+            _configuration.Authentication.Clients.Remove(name);
+            _configuration.Authentication.Clients.Add(name, clientConfiguration);
+
+            SetClient(name);
         }
 
         protected QueryBuilder GetPagedQueryBuilder(int amount, int page)
