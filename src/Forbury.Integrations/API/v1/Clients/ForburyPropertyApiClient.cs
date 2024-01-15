@@ -2,19 +2,22 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.Model;
 using Forbury.Integrations.API.v1.Dto.Property;
 using Forbury.Integrations.API.v1.Interfaces;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace Forbury.Integrations.API.v1.Clients
 {
     public class ForburyPropertyApiClient : ForburyApiClient, IForburyPropertyApiClient
     {
-        public ForburyPropertyApiClient(HttpClient httpClient) :
-            base(httpClient)
+        public ForburyPropertyApiClient(HttpClient httpClient,
+            IOptions<ForburyConfiguration> configuration) :
+            base(httpClient, configuration)
         { }
 
         public async Task<PagedResult<PropertyDto>> GetProperties(int amount = 20,

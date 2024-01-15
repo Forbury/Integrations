@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Forbury.Integrations.API.Interfaces;
 using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.Services;
@@ -11,13 +12,22 @@ namespace Forbury.Integrations.API
     {
         public static IServiceCollection AddForburyApi(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddForburyAuthenticationAndConfiguration(configuration);
+            var forburyConfiguration = new ForburyConfiguration();
+            configuration.GetSection("Forbury").Bind(forburyConfiguration);
+
+            services.AddForburyApi(forburyConfiguration);
+
+            return services;
+        }
+
+        public static IServiceCollection AddForburyApi(this IServiceCollection services, ForburyConfiguration forburyConfiguration)
+        {
+            services.AddForburyAuthenticationAndConfiguration(forburyConfiguration);
 
             // Leaving blank or "0" will setup all API versions for DI
-            var apiVersion = int.TryParse(configuration["Forbury:Api:Version"], out int parsedApiVersion) ?
-                parsedApiVersion : 0;
+            var apiVersion = forburyConfiguration.Api.Version;
 
-            if (apiVersion == 1 || apiVersion == 0) v1.ServiceBuilder.AddForburyServices(services, $"{configuration["Forbury:Api:Url"]}api/v1");
+            if (apiVersion == 1 || apiVersion == 0) v1.ServiceBuilder.AddForburyServices(services, $"{forburyConfiguration.Api.Url}api/v1");
 
             return services;
         }
@@ -32,15 +42,16 @@ namespace Forbury.Integrations.API
             }).AddHttpMessageHandler<AuthorizationDelegatingHandler>();
         }
 
-        private static IServiceCollection AddForburyAuthenticationAndConfiguration(this IServiceCollection services, IConfiguration configuration)
+        private static IServiceCollection AddForburyAuthenticationAndConfiguration(this IServiceCollection services, 
+            ForburyConfiguration forburyConfiguration)
         {
-            services.Configure<ForburyConfiguration>(options => configuration.GetSection("Forbury").Bind(options));
+            services.ConfigureOptions(forburyConfiguration);
 
             services.AddTransient<AuthorizationDelegatingHandler>();
 
             services.AddHttpClient<IForburyAuthenticationService, ForburyAuthenticationService>(config =>
             {
-                config.BaseAddress = new Uri(configuration["Forbury:Authentication:Url"]);
+                config.BaseAddress = new Uri(forburyConfiguration.Authentication.Url);
             });
 
             return services;

@@ -3,19 +3,22 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.File;
 using Forbury.Integrations.API.v1.Dto.Model;
 using Forbury.Integrations.API.v1.Interfaces.Model;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace Forbury.Integrations.API.v1.Clients.Model
 {
     public class ForburyModelApiClient : ForburyApiClient, IForburyModelApiClient
     {
-        public ForburyModelApiClient(HttpClient httpClient) :
-            base(httpClient)
+        public ForburyModelApiClient(HttpClient httpClient,
+            IOptions<ForburyConfiguration> configuration) :
+            base(httpClient, configuration)
         { }
 
         public async Task<PagedResult<ModelDto>> GetModels(ProductType? productType = null,

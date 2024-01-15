@@ -40,7 +40,7 @@ namespace Forbury.Integrations.API.Services
             if (IsAuthorised(customerClient.ClientId))
                 return _tokens[customerClient.ClientId].AccessToken;
 
-            await _tokenSemaphore.WaitAsync(cancellationToken);            
+            await _tokenSemaphore.WaitAsync(cancellationToken);
 
             try
             {

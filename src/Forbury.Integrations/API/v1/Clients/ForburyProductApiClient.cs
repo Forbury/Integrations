@@ -3,18 +3,21 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.Product;
 using Forbury.Integrations.API.v1.Interfaces;
 using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace Forbury.Integrations.API.v1.Clients
 {
     public class ForburyProductApiClient : ForburyApiClient, IForburyProductApiClient
     {
-        public ForburyProductApiClient(HttpClient httpClient) :
-            base(httpClient)
+        public ForburyProductApiClient(HttpClient httpClient,
+            IOptions<ForburyConfiguration> configuration) :
+            base(httpClient, configuration)
         { }
 
         public async Task<List<ProductDto>> GetProducts(CancellationToken cancellationToken = default)
