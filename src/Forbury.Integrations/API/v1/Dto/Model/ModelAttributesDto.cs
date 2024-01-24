@@ -18,5 +18,6 @@ namespace Forbury.Integrations.API.v1.Dto.Model
         [JsonConverter(typeof(StringEnumConverter))]
         public ProductType ProductCreated { get; set; }
         public string VersionCreated { get; set; }
+        public bool FileUploadIncluded { get; set; }
     }
 }
