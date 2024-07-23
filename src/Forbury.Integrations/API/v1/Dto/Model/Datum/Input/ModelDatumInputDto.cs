@@ -10,8 +10,10 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input
 {
     public class ModelDatumInputDto : IModelInput
     {
-        public List<DatumSpaceDto> Spaces { get; set; }
-
+        public List<DatumSpaceDto> Spaces { get; set; } = new List<DatumSpaceDto>();
+        public DatumSettingsDto Settings { get; set; }
+        
+        public string ExternalId { get; set; }
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)] public DateTime? AcquisitionDate { get; set; }
         public int? HoldPeriodMonths { get; set; }
         public EntryExitTypes? EntryMethod { get; set; }
