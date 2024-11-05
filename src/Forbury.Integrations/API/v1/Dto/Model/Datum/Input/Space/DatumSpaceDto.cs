@@ -10,5 +10,8 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space
         public string Demise { get; set; }
         public decimal? MarketRent { get; set; }
         public decimal? LettableArea { get; set; }
+
+        public string MarketLeasingAssumptionProfile { get; set; }
+        public FirstRenewalAssumptionsDto FirstRenewalOverrides { get; set; }
     }
 }
