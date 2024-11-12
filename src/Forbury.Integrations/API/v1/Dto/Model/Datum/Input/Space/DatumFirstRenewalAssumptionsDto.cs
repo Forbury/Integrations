@@ -1,11 +1,11 @@
 ﻿using System;
-using Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space.Lease.Options;
+using Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Market.Options;
 using Forbury.Integrations.Helpers.Converters;
 using Newtonsoft.Json;
 
-namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space.Lease
+namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space
 {
-    public class FirstRenewalAssumptionsDto
+    public class DatumFirstRenewalAssumptionsDto
     {
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)]  public DateTime? StartDate { get; set; }
         public decimal BaseRent { get; set; }

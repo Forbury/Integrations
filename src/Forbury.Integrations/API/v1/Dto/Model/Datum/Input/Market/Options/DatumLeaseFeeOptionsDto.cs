@@ -1,4 +1,4 @@
-﻿namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space.Lease.Options
+﻿namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Market.Options
 {
     public class DatumLeaseFeeOptionsDto
     {
