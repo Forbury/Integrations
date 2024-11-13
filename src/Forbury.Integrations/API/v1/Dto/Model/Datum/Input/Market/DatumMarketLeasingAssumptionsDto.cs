@@ -1,6 +1,6 @@
-﻿using Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space.Lease.Options;
+﻿using Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Market.Options;
 
-namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space.Lease
+namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Market
 {
     public class DatumMarketLeasingAssumptionsDto
     {

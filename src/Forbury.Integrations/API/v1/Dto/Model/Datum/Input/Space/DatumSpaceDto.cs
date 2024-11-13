@@ -12,6 +12,6 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Datum.Input.Space
         public decimal? LettableArea { get; set; }
 
         public string MarketLeasingAssumptionProfile { get; set; }
-        public FirstRenewalAssumptionsDto FirstRenewalOverrides { get; set; }
+        public DatumFirstRenewalAssumptionsDto DatumFirstRenewalOverrides { get; set; }
     }
 }
