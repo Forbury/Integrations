@@ -14,6 +14,9 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Space.Lease
     {
         public decimal BaseRent { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaseType LeaseType { get; set; }
+
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)]
         public DateTime? StartDate { get; set; }
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)]
