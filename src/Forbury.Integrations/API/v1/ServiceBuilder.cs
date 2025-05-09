@@ -13,6 +13,7 @@ namespace Forbury.Integrations.API.v1
             services.AddForburyHttpClient<IForburyModelApiClient, ForburyModelApiClient>(uriPrefix, "model");
             services.AddForburyHttpClient<IForburyModelDatumApiClient, ForburyModelDatumApiClient>(uriPrefix, "model");
             services.AddForburyHttpClient<IForburyModelCommercialApiClient, ForburyModelCommercialApiClient>(uriPrefix, "model");
+            services.AddForburyHttpClient<IForburyModelRetaillApiClient, ForburyModelRetailApiClient>(uriPrefix, "model");
             services.AddForburyHttpClient<IForburyProductApiClient, ForburyProductApiClient>(uriPrefix, "product");
             services.AddForburyHttpClient<IForburyPropertyApiClient, ForburyPropertyApiClient>(uriPrefix, "property");
             services.AddForburyHttpClient<IForburyTeamApiClient, ForburyTeamApiClient>(uriPrefix, "team");
