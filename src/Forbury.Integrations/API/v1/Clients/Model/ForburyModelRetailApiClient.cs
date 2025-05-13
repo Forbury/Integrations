@@ -17,7 +17,7 @@ namespace Forbury.Integrations.API.v1.Clients.Model
             base(httpClient, configuration)
         { }
 
-        public async Task<ModelDto> CreateModel(ValuationInputDto data,
+        public async Task<ModelDto> CreateModel(RetailValuationInputDto data,
             string googlePropertyId,
             int? teamId,
             string externalId = null,
@@ -30,7 +30,7 @@ namespace Forbury.Integrations.API.v1.Clients.Model
             if (!string.IsNullOrEmpty(externalId)) queryBuilder.Add("externalId", externalId);
             if (!string.IsNullOrEmpty(fullAddress)) queryBuilder.Add("fullAddress", fullAddress);
 
-            return await PostAsync<ValuationInputDto, ModelDto>($"retail/{queryBuilder.ToQueryString()}", data, cancellationToken);
+            return await PostAsync<RetailValuationInputDto, ModelDto>($"retail/{queryBuilder.ToQueryString()}", data, cancellationToken);
         }
     }
 }

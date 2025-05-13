@@ -7,7 +7,7 @@ namespace Forbury.Integrations.API.v1.Interfaces.Model
 {
     public interface IForburyModelRetaillApiClient : IForburyModelApiClient
     {
-        Task<ModelDto> CreateModel(ValuationInputDto data,
+        Task<ModelDto> CreateModel(RetailValuationInputDto data,
             string googlePropertyId,
             int? teamId,
             string externalId = null,
