@@ -20,6 +20,11 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Space
         public LeaseDto Lease { get; set; }
         public FirstRenewalDto FirstRenewal { get; set; }
         public MarketAssumptionDto MarketAssumption { get; set; }
+
+        /// <summary>
+        /// Equivalent to growth/renewal type for each space,
+        /// It should exist in the future.renewalAssumptions, otherwise ignored
+        /// </summary>
         public string RenewalAssumptionName { get; set; }
     }
 }
