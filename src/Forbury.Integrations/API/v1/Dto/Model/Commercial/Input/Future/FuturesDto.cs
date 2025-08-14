@@ -20,5 +20,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Future
         public List<GrowthAssumptionDto> EscalationAssumptions { get; set; }
         public List<GrowthAssumptionDto> MarketGrowthAssumptions { get; set; }
         public List<RenewalAssumptionDto> RenewalAssumptions { get; set; }
+        public decimal? IncentiveLumpSum { get; set; }
+        public decimal? IncentiveRentFree { get; set; }
     }
 }
