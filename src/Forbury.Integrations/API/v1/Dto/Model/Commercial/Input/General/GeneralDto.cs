@@ -34,17 +34,30 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.General
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)]
         [DisplayName("Leasehold Expiry")]
         public DateTime? LeaseholdExpiryDate { get; set; }
-        public HistoricalCpiSource HistoricalCpiSource { get; set; }
-        public GrowthBasis LeasingCostsBasis { get; set; }
+        
+        public string HistoricalCpiSource { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GrowthBasisType LeasingCostsBasis { get; set; }
         public decimal? DefaultReviewFrequency { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public RateType LumpSumAppliedRateType { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public RateType RebateAppliedRateType { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public RateType RentFreeAppliedRateType { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public VacancyRateType ExistingVacancyRateType { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public DiscountType ExpiryAllowanceDiscountType { get; set; }
-        public CapitalisationInputDto CapitalisationInput { get; set; }
-        public DiscountedCashflowInputDto DiscountedCashflowInput { get; set; }
-        public AcquisitionCostDto AcquisitionCostInput { get; set; }
+        public CapitalisationDto Capitalisation { get; set; }
+        public DiscountedCashflowDto DiscountedCashflow { get; set; }
+        public AcquisitionCostDto AcquisitionCost { get; set; }
         public List<decimal?> UpperBound { get; set; }
         public List<decimal?> ROUNDING { get; set; }
         public List<decimal?>  StampDuties { get; set; }
