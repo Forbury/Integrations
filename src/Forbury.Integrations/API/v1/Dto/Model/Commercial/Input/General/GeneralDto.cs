@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Enums;
 
 namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.General
 {
@@ -37,24 +36,18 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.General
         
         public string HistoricalCpiSource { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public GrowthBasisType LeasingCostsBasis { get; set; }
+        public string LeasingCostsBasis { get; set; }
         public decimal? DefaultReviewFrequency { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public RateType LumpSumAppliedRateType { get; set; }
+        public string LumpSumAppliedRateType { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public RateType RebateAppliedRateType { get; set; }
+        public string RebateAppliedRateType { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public RateType RentFreeAppliedRateType { get; set; }
+        public string RentFreeAppliedRateType { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public VacancyRateType ExistingVacancyRateType { get; set; }
+        public string ExistingVacancyRateType { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public DiscountType ExpiryAllowanceDiscountType { get; set; }
+        public string ExpiryAllowanceDiscountType { get; set; }
         public CapitalisationDto Capitalisation { get; set; }
         public DiscountedCashflowDto DiscountedCashflow { get; set; }
         public AcquisitionCostDto AcquisitionCost { get; set; }

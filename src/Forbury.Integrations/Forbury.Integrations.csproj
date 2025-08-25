@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.9.0-betaTest8</Version>
+    <Version>1.9.0-beta</Version>
     <Authors>Forbury Development Team</Authors>
     <Company>Forbury</Company>
     <PackageDescription>This .NET client library provides a quick and easy option for integrating with Forbury APIs.</PackageDescription>
@@ -21,7 +21,7 @@
   <PropertyGroup>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
-    <Title>MyTest3</Title>
+    <Title></Title>
   </PropertyGroup>
 
   <ItemGroup>
