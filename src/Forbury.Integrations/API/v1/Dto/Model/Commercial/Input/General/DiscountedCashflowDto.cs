@@ -3,7 +3,6 @@
     public class DiscountedCashflowDto
     {
         public decimal? TerminalBudgetedCapexAllowanceMonths { get; set; }
-
         public decimal? TerminalSinkingFundAllowanceMonths { get; set; }
     }
 }

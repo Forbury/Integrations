@@ -2,9 +2,9 @@
 {
     public class AcquisitionCostDto
     {
-        public decimal? AcqCostsLegal { get; set; }
-        public decimal? AcqCostDD { get; set; }
-        public decimal? AcqCost_AgencyCommission { get; set; }
-        public decimal? AcqCostsOther { get; set; }
+        public decimal? LegalFees { get; set; }
+        public decimal? DueDiligence { get; set; }
+        public decimal? AgencyCommission { get; set; }
+        public decimal? Other { get; set; }
     }
 }

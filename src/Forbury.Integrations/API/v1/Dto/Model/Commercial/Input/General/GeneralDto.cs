@@ -33,26 +33,19 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.General
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)]
         [DisplayName("Leasehold Expiry")]
         public DateTime? LeaseholdExpiryDate { get; set; }
-        
         public string HistoricalCpiSource { get; set; }
-
         public string LeasingCostsBasis { get; set; }
         public decimal? DefaultReviewFrequency { get; set; }
-
         public string LumpSumAppliedRateType { get; set; }
-
         public string RebateAppliedRateType { get; set; }
-
         public string RentFreeAppliedRateType { get; set; }
-
         public string ExistingVacancyRateType { get; set; }
-
         public string ExpiryAllowanceDiscountType { get; set; }
         public CapitalisationDto Capitalisation { get; set; }
         public DiscountedCashflowDto DiscountedCashflow { get; set; }
         public AcquisitionCostDto AcquisitionCost { get; set; }
         public List<decimal?> UpperBound { get; set; }
-        public List<decimal?> ROUNDING { get; set; }
+        public List<decimal?> Rounding { get; set; }
         public List<decimal?>  StampDuties { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
