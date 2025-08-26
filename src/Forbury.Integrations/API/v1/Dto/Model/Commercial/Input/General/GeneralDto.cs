@@ -15,7 +15,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.General
         public DateTime? ValuationDate { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ValuationType ValuationType { get; set; }
-        public string ValuationMethod { get; set; } 
+        public string ValuationMethod { get; set; }
         public decimal? RoundedAdoptedValue { get; set; }
         public decimal? AdoptedValueAdjustment { get; set; }
         public decimal? CapRateInitial { get; set; }
@@ -46,7 +46,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.General
         public AcquisitionCostDto AcquisitionCost { get; set; }
         public List<decimal?> UpperBound { get; set; }
         public List<decimal?> Rounding { get; set; }
-        public List<decimal?>  StampDuties { get; set; }
+        public List<decimal?> StampDuties { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
