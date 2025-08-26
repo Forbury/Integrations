@@ -21,7 +21,6 @@
   <PropertyGroup>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
-    <Title></Title>
   </PropertyGroup>
 
   <ItemGroup>
