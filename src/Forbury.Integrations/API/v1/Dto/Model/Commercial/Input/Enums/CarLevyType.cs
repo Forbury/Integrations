@@ -3,7 +3,7 @@
     public enum CarLevyType
     {
         None,
-        Leasee,
-        Leaseor
+        Lessee,
+        Lessor
     }
 }
