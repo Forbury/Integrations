@@ -4,7 +4,6 @@ using Forbury.Integrations.API.v1.Dto.Model.Commercial;
 using Forbury.Integrations.API.v1.Dto.Model.Commercial.Input;
 using Forbury.Integrations.API.v1.Interfaces.Model;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.Extensions.Options;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,7 +13,7 @@ namespace Forbury.Integrations.API.v1.Clients.Model
     public class ForburyModelCommercialApiClient : ForburyModelApiClient, IForburyModelCommercialApiClient
     {
         public ForburyModelCommercialApiClient(HttpClient httpClient,
-            IOptions<ForburyConfiguration> configuration) :
+            ForburyConfiguration configuration) :
             base(httpClient, configuration)
         { }
 

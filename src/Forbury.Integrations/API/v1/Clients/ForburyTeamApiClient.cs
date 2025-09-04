@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-using Forbury.Integrations.API.Models.Configuration;
+﻿using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.v1.Dto;
 using Forbury.Integrations.API.v1.Dto.Enums;
 using Forbury.Integrations.API.v1.Dto.Model;
@@ -10,14 +6,17 @@ using Forbury.Integrations.API.v1.Dto.Property;
 using Forbury.Integrations.API.v1.Dto.Team;
 using Forbury.Integrations.API.v1.Interfaces;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.Extensions.Options;
+using System;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Forbury.Integrations.API.v1.Clients
 {
     public class ForburyTeamApiClient : ForburyApiClient, IForburyTeamApiClient
     {
         public ForburyTeamApiClient(HttpClient httpClient,
-            IOptions<ForburyConfiguration> configuration) :
+            ForburyConfiguration configuration) :
             base(httpClient, configuration)
         { }
 
