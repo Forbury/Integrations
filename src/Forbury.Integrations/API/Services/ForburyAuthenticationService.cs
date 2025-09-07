@@ -10,7 +10,6 @@ using Forbury.Integrations.API.Models;
 using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.Helpers.Extensions;
 using IdentityServer4.Models;
-using Microsoft.Extensions.Options;
 
 namespace Forbury.Integrations.API.Services
 {
@@ -23,10 +22,10 @@ namespace Forbury.Integrations.API.Services
         private readonly ForburyConfiguration _configuration;
 
         public ForburyAuthenticationService(HttpClient httpClient,
-            IOptions<ForburyConfiguration> configurationOptions)
+            ForburyConfiguration configurationOptions)
         {
             _httpClient = httpClient;
-            _configuration = configurationOptions.Value;
+            _configuration = configurationOptions;
         }
 
         public async Task<string> GetAccessTokenAsync(CancellationToken cancellationToken, string clientName = null)

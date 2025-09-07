@@ -1,19 +1,18 @@
 ﻿using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.v1.Dto.Model;
+using Forbury.Integrations.API.v1.Dto.Model.Retail.Input;
 using Forbury.Integrations.API.v1.Interfaces.Model;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.Extensions.Options;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Forbury.Integrations.API.v1.Dto.Model.Retail.Input;
 
 namespace Forbury.Integrations.API.v1.Clients.Model
 {
     public class ForburyModelRetailApiClient : ForburyModelApiClient, IForburyModelRetaillApiClient
     {
         public ForburyModelRetailApiClient(HttpClient httpClient,
-            IOptions<ForburyConfiguration> configuration) :
+            ForburyConfiguration configuration) :
             base(httpClient, configuration)
         { }
 
