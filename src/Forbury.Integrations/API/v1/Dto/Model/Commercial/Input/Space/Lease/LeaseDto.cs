@@ -57,7 +57,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Space.Lease
         public DateTime? PriorReviewDate { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public CarLevyType CarLevy { get; set; }
+        public CarLevyType? CarLevy { get; set; }
 
         public OutstandingIncentivesDto OutstandingIncentives { get; set; }
         public CommencementIncentivesDto CommencementIncentives { get; set; }
