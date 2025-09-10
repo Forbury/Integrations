@@ -1,4 +1,6 @@
-﻿namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Outgoings
+﻿using System.Collections.Generic;
+
+namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Outgoings
 {
     public class OutgoingsItemDto
     {
@@ -10,5 +12,6 @@
         public decimal? PreviousBudget { get; set; }
         public decimal? CurrentBudget { get; set; }
         public decimal? AdoptedBudget { get; set; }
+        public RecoveryAllocationDto RecoveryAllocation { get; set; }
     }
 }
