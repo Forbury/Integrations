@@ -11,8 +11,10 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Future
         public CalendarBasis MarketYearBasis { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public CalendarBasis OutgoingsYearBasis { get; set; }
-        public string EscalationYearBasis { get; set; }
-        public string MarketRentGrowthBasis { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public CalendarBasis EscalationYearBasis { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GrowthBasisType MarketRentGrowthBasis { get; set; }
         public decimal? PriorYearCpi { get; set; }
         public bool? DeferOutgoings { get; set; }
         public List<GrowthAssumptionDto> EscalationAssumptions { get; set; }
