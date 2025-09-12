@@ -1,5 +1,6 @@
 ﻿using Forbury.Integrations.API.Exceptions;
 using Forbury.Integrations.API.Models;
+using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.v1.Interfaces;
 using Forbury.Integrations.Helpers.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -8,13 +9,9 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
 using System.Net.Http;
-using System.Net.Mime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Forbury.Integrations.API.Models.Configuration;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
 
 namespace Forbury.Integrations.API.v1.Clients
 {
@@ -26,11 +23,10 @@ namespace Forbury.Integrations.API.v1.Clients
 
         private readonly ForburyConfiguration _configuration;
 
-        public ForburyApiClient(HttpClient httpClient,
-            IOptions<ForburyConfiguration> configuration)
+        public ForburyApiClient(HttpClient httpClient, ForburyConfiguration configuration)
         {
             _httpClient = httpClient;
-            _configuration = configuration.Value;
+            _configuration = configuration;
         }
 
         public void SetClient(string name)
