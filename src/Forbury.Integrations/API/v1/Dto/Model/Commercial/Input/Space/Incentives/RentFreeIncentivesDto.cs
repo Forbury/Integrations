@@ -9,7 +9,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Space.Incentive
     public class RentFreeIncentivesDto
     {
         [JsonConverter(typeof(StringEnumConverter))]
-        public RentFreeBasisType Basis { get; set; }
+        public RentFreeBasisType? Basis { get; set; }
         public decimal? PercentApplied { get; set; }
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)]
         public DateTime? StartDate { get; set; }
