@@ -2,7 +2,6 @@
 {
     public enum CarLevyType
     {
-        None,
         Lessee,
         Lessor
     }

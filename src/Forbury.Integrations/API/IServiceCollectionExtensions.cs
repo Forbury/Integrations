@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Forbury.Integrations.API.Interfaces;
+﻿using Forbury.Integrations.API.Interfaces;
 using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.API.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Forbury.Integrations.API
 {
@@ -22,6 +21,7 @@ namespace Forbury.Integrations.API
 
         public static IServiceCollection AddForburyApi(this IServiceCollection services, ForburyConfiguration forburyConfiguration)
         {
+            services.AddSingleton(forburyConfiguration);
             services.AddForburyAuthenticationAndConfiguration(forburyConfiguration);
 
             // Leaving blank or "0" will setup all API versions for DI
@@ -45,8 +45,6 @@ namespace Forbury.Integrations.API
         private static IServiceCollection AddForburyAuthenticationAndConfiguration(this IServiceCollection services, 
             ForburyConfiguration forburyConfiguration)
         {
-            services.ConfigureOptions(forburyConfiguration);
-
             services.AddTransient<AuthorizationDelegatingHandler>();
 
             services.AddHttpClient<IForburyAuthenticationService, ForburyAuthenticationService>(config =>
