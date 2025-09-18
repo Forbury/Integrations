@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Outgoings
 {
-    public class RecoveryAllocationDto
+    public class OutgoingsRecoveryDto
     {
-        public string RecoveryProfileCode { get; set; }
-        public decimal ManualAllocation { get; set; }
-        public decimal ManualAdjust { get; set; }
+        public string ProfileCode { get; set; }
+        public decimal AllocationPercentage { get; set; }
+        public decimal AdjustAmount { get; set; }
         public decimal AdoptedArea { get; set; }
     }
 }
