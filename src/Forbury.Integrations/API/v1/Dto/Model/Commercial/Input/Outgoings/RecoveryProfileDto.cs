@@ -8,10 +8,10 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Outgoings
 {
     public class RecoveryProfileDto
     {
-        public string ProfileCode { get; set; }
-        public string ProfileDescription { get; set; }
-        public decimal ProfileAdoptedArea { get; set; }
-        public decimal ProfileFirstManualAdjustment { get; set; }
-        public decimal ProfileSecondManualAdjustment { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
+        public decimal? AdoptedArea { get; set; }
+        public decimal? FirstManualAdjustment { get; set; }
+        public decimal? SecondManualAdjustment { get; set; }
     }
 }
