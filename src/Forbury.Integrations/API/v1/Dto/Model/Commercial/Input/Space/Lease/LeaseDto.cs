@@ -59,6 +59,7 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Space.Lease
         [JsonConverter(typeof(StringEnumConverter))]
         public CarLevyType? CarLevy { get; set; }
 
+        public string NetSemiRecoveriesType { get; set; }
         public OutstandingIncentivesDto OutstandingIncentives { get; set; }
         public CommencementIncentivesDto CommencementIncentives { get; set; }
 
