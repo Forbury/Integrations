@@ -10,5 +10,6 @@ namespace Forbury.Integrations.API.v1.Dto.Model.Commercial.Input.Outgoings
         [JsonConverter(typeof(DateFormatConverter), JsonFormats.DateFormat)]
         public DateTime? OutgoingsDate { get; set; }
         public List<OutgoingsItemDto> Items { get; set; }
+        public List<RecoveryProfileDto> RecoveryProfiles { get; set; }
     }
 }
