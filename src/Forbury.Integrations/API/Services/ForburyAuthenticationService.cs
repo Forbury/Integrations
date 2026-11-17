@@ -9,7 +9,6 @@ using Forbury.Integrations.API.Interfaces;
 using Forbury.Integrations.API.Models;
 using Forbury.Integrations.API.Models.Configuration;
 using Forbury.Integrations.Helpers.Extensions;
-using IdentityServer4.Models;
 
 namespace Forbury.Integrations.API.Services
 {
@@ -45,7 +44,7 @@ namespace Forbury.Integrations.API.Services
             {
                 var data = new FormUrlEncodedContent(new Dictionary<string, string>
                 {
-                    {"grant_type", GrantType.ClientCredentials},
+                    {"grant_type", "client_credentials"},
                     {"client_id", customerClient.ClientId},
                     {"client_secret", customerClient.ClientSecret}
                 });
