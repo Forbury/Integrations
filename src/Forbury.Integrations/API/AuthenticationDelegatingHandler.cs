@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Forbury.Integrations.API.Interfaces;
-using IdentityModel.Client;
 
 namespace Forbury.Integrations.API
 {
@@ -21,7 +21,7 @@ namespace Forbury.Integrations.API
             string clientName = request.Headers.Contains(Constants.ClientHeaderName) ?
                 request.Headers.GetValues(Constants.ClientHeaderName).FirstOrDefault() : null;
             string accessToken = await _forburyAuthenticationService.GetAccessTokenAsync(cancellationToken, clientName);
-            request.SetBearerToken(accessToken);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             return await base.SendAsync(request, cancellationToken);
         }
     }
